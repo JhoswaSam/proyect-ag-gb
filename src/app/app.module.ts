@@ -11,6 +11,7 @@ import { ErrorComponent } from './error/error.component';
 import { LoginComponent } from './login/login.component';
 import { ContactComponent } from './contact/contact.component';
 import { DashBoardAdminComponent } from './dashboardAdmin/dashboardAdmin.component';
+import { DatatableComponent } from './components/datatable/datatable.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { DashBoardAdminComponent } from './dashboardAdmin/dashboardAdmin.compone
     ErrorComponent,
     LoginComponent,
     ContactComponent,
-    DashBoardAdminComponent
+    DashBoardAdminComponent,
+    DatatableComponent
   ],
   imports: [
     BrowserModule,

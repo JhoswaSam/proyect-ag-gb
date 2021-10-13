@@ -10,6 +10,7 @@ import { ErrorComponent } from './error/error.component';
 import { ContactComponent } from './contact/contact.component';
 import { IndexComponent } from './index/index.component';
 import { DashBoardAdminComponent } from './dashboardAdmin/dashboardAdmin.component';
+import { DatatableComponent } from './components/datatable/datatable.component';
 
 
 const routes = [
@@ -19,7 +20,11 @@ const routes = [
   {path: 'list',  component: ListBComponent},
   {path: 'error',  component: ErrorComponent},
   {path: 'contact',  component: ContactComponent},
-  {path: 'admin',  component: DashBoardAdminComponent}
+  {path: 'admin',  component: DashBoardAdminComponent,
+  children: [
+    {path: 'table',  component: DatatableComponent}
+  ]},
+
 ];
 
 @NgModule({
