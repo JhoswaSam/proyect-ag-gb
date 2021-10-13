@@ -10,9 +10,4 @@ export class NavbarComponent implements OnInit{
   }
   ngOnInit(){
   }
-
-  reloadPage(): void{
-
-  }
-
 }
