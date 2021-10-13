@@ -9,6 +9,7 @@ import { ListBComponent } from './listB/listB.component';
 import { ErrorComponent } from './error/error.component';
 import { ContactComponent } from './contact/contact.component';
 import { IndexComponent } from './index/index.component';
+import { DashBoardAdminComponent } from './dashboardAdmin/dashboardAdmin.component';
 
 
 const routes = [
@@ -17,7 +18,8 @@ const routes = [
   {path: 'login',  component: LoginComponent},
   {path: 'list',  component: ListBComponent},
   {path: 'error',  component: ErrorComponent},
-  {path: 'contact',  component: ContactComponent}
+  {path: 'contact',  component: ContactComponent},
+  {path: 'admin',  component: DashBoardAdminComponent}
 ];
 
 @NgModule({

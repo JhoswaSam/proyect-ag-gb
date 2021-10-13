@@ -10,6 +10,7 @@ import { ListBComponent } from './listB/listB.component';
 import { ErrorComponent } from './error/error.component';
 import { LoginComponent } from './login/login.component';
 import { ContactComponent } from './contact/contact.component';
+import { DashBoardAdminComponent } from './dashboardAdmin/dashboardAdmin.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ContactComponent } from './contact/contact.component';
     ListBComponent,
     ErrorComponent,
     LoginComponent,
-    ContactComponent
+    ContactComponent,
+    DashBoardAdminComponent
   ],
   imports: [
     BrowserModule,
