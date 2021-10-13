@@ -1,0 +1,62 @@
+.container{ 
+    
+    background-color: rgba(23, 209, 223, 0.849);
+    height:auto;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+.btn {
+    background-color:rgb(6, 153, 121); 
+    color:rgb(0, 0, 0);
+    font-size: 1em;
+	text-align:center;
+	color:#ffffff;
+    font-style:italic;
+    font-weight:bold;
+    
+    font-family:'Helvetica','Verdana','Monaco',sans-serif;
+    font: oblique bold 120% cursive;
+}
+
+h1 {
+    color:#080000;
+    font-style:italic;
+    font-weight:bold;
+    font-family:'fantasy','Verdana','Monaco',sans-serif;
+    font: oblique bold 250% cursive;
+}
+label {
+    color:#080000;
+    font-style:italic;
+    font-weight:bold;
+    font-family:'fantasy','Verdana','Monaco',sans-serif;
+    font: oblique bold 120% cursive;
+}
+.placeholder{
+    color:#080000;
+    font-style:italic;
+    font-weight:bold;
+    font-family:'fantasy','Verdana','Monaco',sans-serif;
+    font: oblique bold 120% cursive;
+}
+.scope{
+    color:#080000;
+    font-style:italic;
+    font-weight:bold;
+    font-family:'fantasy','Verdana','Monaco',sans-serif;
+    font: oblique bold 120% cursive;
+}
+table {
+    background-color:rgb(255, 255, 255); 
+    color:rgb(0, 0, 0);
+    font-size: 1em;
+	text-align:center;
+	color:#000000;
+    font-style:italic;
+    font-weight:bold;
+    
+    font-family:'Helvetica','Verdana','Monaco',sans-serif;
+    font: oblique bold 120% cursive;
+}
+
