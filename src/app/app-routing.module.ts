@@ -11,6 +11,7 @@ import { ContactComponent } from './contact/contact.component';
 import { IndexComponent } from './index/index.component';
 import { DashBoardAdminComponent } from './dashboardAdmin/dashboardAdmin.component';
 import { DatatableComponent } from './components/datatable/datatable.component';
+import { PeliculasComponent } from './components/peliculas/peliculas.component';
 
 
 const routes = [
@@ -24,7 +25,7 @@ const routes = [
   children: [
     {path: 'table',  component: DatatableComponent}
   ]},
-
+  {path: 'peliculas',  component: PeliculasComponent},
 ];
 
 @NgModule({

@@ -12,7 +12,11 @@ import { LoginComponent } from './login/login.component';
 import { ContactComponent } from './contact/contact.component';
 import { DashBoardAdminComponent } from './dashboardAdmin/dashboardAdmin.component';
 import { DatatableComponent } from './components/datatable/datatable.component';
+import { PeliculasComponent } from './components/peliculas/peliculas.component';
 
+
+// Import the module from the SDK
+import { AuthModule } from '@auth0/auth0-angular';
 
 @NgModule({
   declarations: [
@@ -25,12 +29,21 @@ import { DatatableComponent } from './components/datatable/datatable.component';
     LoginComponent,
     ContactComponent,
     DashBoardAdminComponent,
-    DatatableComponent
+    DatatableComponent,
+    PeliculasComponent
   ],
   imports: [
     BrowserModule,
 
-    AppRoutingModule
+    AppRoutingModule,
+
+    // Import the module into the application, with configuration
+    AuthModule.forRoot({
+      domain: 'dev-4qlklexx.us.auth0.com',
+      clientId: 'Hbm7iNSJ48x7PCq0vmLCyJRUxmUbUnpE',
+      cacheLocation: "localstorage", // Guardar autentificacion
+      useRefreshTokens: true // Modulo de actualizacion de token automatico
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
