@@ -12,6 +12,9 @@ import { LoginComponent } from './login/login.component';
 import { ContactComponent } from './contact/contact.component';
 import { DashBoardAdminComponent } from './dashboardAdmin/dashboardAdmin.component';
 import { DatatableComponent } from './components/datatable/datatable.component';
+import { EditarComponent } from './components/datatable/editar/editar.component';
+import { EliminarComponent } from './components/datatable/eliminar/eliminar.component';
+import { EntregarComponent } from './components/datatable/entregar/entregar.component';
 
 
 @NgModule({
@@ -25,7 +28,10 @@ import { DatatableComponent } from './components/datatable/datatable.component';
     LoginComponent,
     ContactComponent,
     DashBoardAdminComponent,
-    DatatableComponent
+    DatatableComponent,
+    EditarComponent,
+    EliminarComponent,
+    EntregarComponent
   ],
   imports: [
     BrowserModule,
