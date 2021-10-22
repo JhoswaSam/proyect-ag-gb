@@ -25,7 +25,7 @@
               </div>
 
               <nav class="mt-10">
-                  <a class="flex items-center mt-4 py-2 px-6 bg-gray-700 bg-opacity-25 text-gray-100" href="/">
+                  <a class="flex items-center mt-4 py-2 px-6 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100  " routerLink ="/admin">
                       <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                           stroke="currentColor">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -38,7 +38,7 @@
                   </a>
 
                   <a class="flex items-center mt-4 py-2 px-6 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100"
-                      href="/ui-elements">
+                      routerLink = " ">
                       <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                           stroke="currentColor">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -50,7 +50,7 @@
                   </a>
 
                   <a class="flex items-center mt-4 py-2 px-6 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100"
-                      href="/tables">
+                      routerLink ="table">
                       <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                           stroke="currentColor">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -72,7 +72,10 @@
 
                       <span class="mx-3">Forms</span>
                   </a>
-              </nav>
+
+                </nav>
+
+
           </div>
           <div class="flex-1 flex flex-col overflow-hidden">
               <header class="flex justify-between items-center py-4 px-6 bg-white border-b-4 border-indigo-600">
@@ -171,15 +174,20 @@
                         ></span>
                         <div class="opacity-0 invisible dropdown-menu transition-all duration-300 transform origin-top-right -translate-y-2 scale-95">
                           <div class="absolute right-0 mt-2 w-48 bg-white rounded-md overflow-hidden shadow-xl z-10" role="menu">
-                              <a routerLink="" routerLinkActive="active" tabindex="0" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white"  role="menuitem" >Profile</a>
-                              <a routerLink="" routerLinkActive="active"  tabindex="2" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white" role="menuitem"  (click)="Logout()" >Logout</a>
+                            <a routerLink="" routerLinkActive="active" tabindex="0" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white"  role="menuitem" >Profile</a>
+                            <a routerLink="" routerLinkActive="active" tabindex="2" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white"  role="menuitem" >Back to home</a>
+                              <a routerLink="" routerLinkActive="active"  tabindex="3" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white" role="menuitem"  (click)="Logout()" >Logout</a>
                           </div>
                         </div>
                       </div>
                   </div>
               </header>
+              <router-outlet></router-outlet>
               <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
-                  <app-datatable></app-datatable>
+                  <pre *ngIf="auth.user$ | async as user">
+                    <code>{{user | json}}
+                    </code>
+                  </pre>
               </main>
           </div>
       </div>

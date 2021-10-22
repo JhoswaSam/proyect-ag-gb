@@ -17,6 +17,9 @@ import { PeliculasComponent } from './components/peliculas/peliculas.component';
 
 // Import the module from the SDK
 import { AuthModule } from '@auth0/auth0-angular';
+import { RequestComponent } from './request/request.component';
+import { FormsModule } from '@angular/forms';
+import { datatableService } from './components/datatable/datatable.service';
 
 @NgModule({
   declarations: [
@@ -30,11 +33,12 @@ import { AuthModule } from '@auth0/auth0-angular';
     ContactComponent,
     DashBoardAdminComponent,
     DatatableComponent,
-    PeliculasComponent
+    PeliculasComponent,
+    RequestComponent
   ],
   imports: [
     BrowserModule,
-
+    FormsModule,
     AppRoutingModule,
 
     // Import the module into the application, with configuration
@@ -45,7 +49,7 @@ import { AuthModule } from '@auth0/auth0-angular';
       useRefreshTokens: true // Modulo de actualizacion de token automatico
     }),
   ],
-  providers: [],
+  providers: [datatableService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

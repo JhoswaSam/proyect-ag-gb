@@ -12,20 +12,25 @@ import { IndexComponent } from './index/index.component';
 import { DashBoardAdminComponent } from './dashboardAdmin/dashboardAdmin.component';
 import { DatatableComponent } from './components/datatable/datatable.component';
 import { PeliculasComponent } from './components/peliculas/peliculas.component';
+import { RequestComponent } from './request/request.component';
+import { AuthGuard } from '@auth0/auth0-angular';
 
 
 const routes = [
+
   {path: '', component: IndexComponent },
   {path: 'about',  component: AboutComponent},
   {path: 'login',  component: LoginComponent},
   {path: 'list',  component: ListBComponent},
-  {path: 'error',  component: ErrorComponent},
+
   {path: 'contact',  component: ContactComponent},
-  {path: 'admin',  component: DashBoardAdminComponent,
+  {path: 'admin',  component: DashBoardAdminComponent, canActivate: [AuthGuard],
   children: [
     {path: 'table',  component: DatatableComponent}
   ]},
   {path: 'peliculas',  component: PeliculasComponent},
+  {path: 'request',  component: RequestComponent},
+  { path: '**', component: ErrorComponent },
 ];
 
 @NgModule({

@@ -3,7 +3,7 @@
   <div class="md:flex items-center justify-between py-2 px-8 md:px-12">
       <div class="flex justify-between items-center">
          <div class="text-2xl font-bold text-white md:text-3xl">
-              <a href="#">Brand</a>
+              <a routerLink = "">OxyHelp</a>
          </div>
           <div class="md:hidden flex justify-between">
               <a class="xl:hidden flex mr-6 items-center text-white" href="#">
@@ -27,6 +27,7 @@
           <a routerLink="" routerLinkActive="active" class="hover:text-gray-200">Home</a>
           <a routerLink="/about" routerLinkActive="active" class="hover:text-gray-200">About</a>
           <a routerLink="/contact" routerLinkActive="active" class="hover:text-gray-200">Contact</a>
+          <a routerLink="/request" routerLinkActive="active" class="hover:text-gray-200">Request</a>
         </div>
       <div class="hidden xl:flex items-center space-x-5 text-white">
         <a class="hover:text-gray-200" href="#">
@@ -50,7 +51,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
         </a>
-        <a class="flex items-center hover:text-gray-200"  *ngIf="(auth.isAuthenticated$ | async)" routerLink = "admin">
+        <a class="flex items-center hover:text-gray-200"  *ngIf="(auth.isAuthenticated$ | async)" routerLink = "/admin">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
