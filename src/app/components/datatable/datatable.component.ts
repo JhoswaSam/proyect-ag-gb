@@ -18,6 +18,7 @@ export class DatatableComponent implements OnInit{
   ){ }
 
   ngOnInit(): void{ }
+
   balones: Ball[] = this.nuevoBService.balones;
 
   nuevoB: Ball = {
@@ -36,7 +37,7 @@ export class DatatableComponent implements OnInit{
     }
   }
 
-  eliminar(){
+  deleteBall(){
     this.nuevoBService.eliminar();
   }
 
