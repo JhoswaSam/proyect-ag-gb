@@ -3,7 +3,7 @@ import { Component, OnInit} from '@angular/core';
 
 
 import { Ball } from '../../interface/balls';
-import { datatableService } from "./datatable.service";
+import { datatableService } from "../../service/datatable.service";
 
 
 
@@ -22,7 +22,7 @@ export class DatatableComponent implements OnInit{
   balones: Ball[] = this.nuevoBService.balones;
 
   nuevoB: Ball = {
-    id: "",
+    id: Math.round(Math.random() * ( 999 - 100 )+100).toString(),
     tamanio: "",
     estado: ""
   };

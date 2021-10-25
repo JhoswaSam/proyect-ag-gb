@@ -9,85 +9,42 @@
 
 
 <!-- component -->
-<div class="overflow-x-auto">
-  <div class="min-w-screen min-h-screen bg-gray-100 flex  justify-center font-sans overflow-hidden">
+<div class="">
+  <div class="min-w-screen min-h-screen bg-gray-100 flex  justify-center font-sans ">
       <div class="w-full lg:w-5/6">
 
-          <!--button-->
-          <div class="my-6">
+          <div class="bg-white shadow-md rounded my-6 overflow-y-scroll h-96 overflow-x-auto ">
 
-            <label for="my-modal-2" class="btn btn-primary modal-button">Add new item</label>
-            <input type="checkbox" id="my-modal-2" class="modal-toggle">
-            <div class="modal ">
-              <div class="modal-box p-10 card bg-base-200 max-w-xs">
-                <div class="form-control">
-
-                  <form #f="ngForm" (ngSubmit)="newBall()" novalidate>
-                    <label class="label">
-                      <span class="label-text">Size / M3</span>
-                    </label>
-                    <input type="text" placeholder="20 M3" class="input" name="tamanio" [(ngModel)]="nuevoB.tamanio">
-                    <label class="label"></label>
-
-
-                    <div class="w-full flex flex-col mb-3">
-                      <span class="label-text">State</span>
-                      <select class="block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4 md:w-full " required="required" name="sd" [(ngModel)]="nuevoB.estado">                                                                                                                                                                                                                                                                                                                                                            estado" id="integration_city_id" ngModel>
-                        <option value="">Seleted state</option>
-                        <option value="Available">Available</option>
-                        <option value="Not available">Not available</option>
-                        <option value="In maintenance">In maintenance</option>
-                      </select>
-                      <p class="text-sm text-red-500 hidden mt-3" id="error">Please fill out this field.</p>
-                    </div>
-
-                    <div class="modal-action ">
-                      <label for="my-modal-2" class=""><button class="btn btn-primary" type="submit" [disabled]="!nuevoB.tamanio || !nuevoB.estado ">Accept</button></label>
-                      <label for="my-modal-2" class="btn">Close</label>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-
-
-          </div>
-
-
-
-          <!--end button-->
-
-          <div class="bg-white shadow-md rounded my-6 overflow-y-scroll h-96 ">
-
-              <table class="min-w-max w-full table-auto ">
+              <table class="min-w-max w-full table-auto">
 
                   <thead>
                       <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
                           <!--th class="py-3 px-6 text-left">Project</th-->
                           <th class="py-3 px-6 text-left">ID</th>
-                          <th class="py-3 px-6 text-center">SIZE / M3</th>
-                          <th class="py-3 px-6 text-center">STATE</th>
                           <th class="py-3 px-6 text-center">ACTION</th>
+                          <th class="py-3 px-6 text-center">SIZE / M3</th>
+                          <th class="py-3 px-6 text-center">NAME</th>
+                          <th class="py-3 px-6 text-center">LAST NAME</th>
+                          <th class="py-3 px-6 text-center">DNI</th>
+                          <th class="py-3 px-6 text-center">PHONE</th>
+                          <th class="py-3 px-6 text-center">REGION</th>
+                          <th class="py-3 px-6 text-center">PROVINCIA</th>
+                          <th class="py-3 px-6 text-center">DIRECCION</th>
+                          <th class="py-3 px-6 text-center">OBSERBACIONES</th>
+                          <th class="py-3 px-6 text-center">FECHA ENTREGA</th>
+                          <th class="py-3 px-6 text-center">FECHA DEVOLUCION</th>
                       </tr>
                   </thead>
                   <tbody class="text-gray-600 text-sm font-light">
 
-                      <tr *ngFor="let ball of balones" class="border-b border-gray-200 hover:bg-gray-100">
+                      <tr *ngFor="let s of solicitudes" class="border-b border-gray-200 hover:bg-gray-100">
 
-                          <td class="py-3 px-6 text-left">
+                          <th class="py-3 px-6 text-left">
                               <div class="flex items-center">
-                                  <span>{{ball.id}}</span>
+                                  <span>{{s.id}}</span>
                               </div>
-                          </td>
-                          <td class="py-3 px-6 text-center">
+                          </th>
 
-                              <span>{{ball.tamanio}}</span>
-                          </td>
-                          <td class="py-3 px-6 text-center">
-                            <span *ngIf="ball.estado === 'Not available'" class="bg-red-200 text-red-600 py-1 px-3 rounded-full text-xs">{{ball.estado}}</span>
-                            <span *ngIf="ball.estado === 'Available'" class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">{{ball.estado}}</span>
-                            <span *ngIf="ball.estado === 'In maintenance'" class="bg-yellow-200 text-yellow-600 py-1 px-3 rounded-full text-xs">{{ball.estado}}</span>
-                          </td>
                           <td class="py-3 px-6 text-center">
                             <!-- MODAL-->
 
@@ -125,18 +82,20 @@
                             </div>
                             <!-- MODAL DELETE-->
                             <input type="checkbox" id="my-modal-4" class="modal-toggle">
-                            <div class="modal alert alert-warning">
+                            <div class="modal alert alert-warning ">
                               <div class="modal-box">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-6 h-6 mx-2 stroke-current">
                                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
                                 </svg>
                                 <p>Sure you want to delete, since this action is permanent</p>
                                 <div class="modal-action ">
-                                  <label for="my-modal-4" class="btn btn-warning ml-2" (click) ="deleteBall()">Accept</label>
-                                  <label for="my-modal-4" class="btn">Close</label>
+                                  <label for="my-modal-4" class="btn btn-warning ml-2" (click) ="deleteO()">Accept</label>
+                                  <!--<label for="my-modal-4" class="btn">Close</label>-->
                                 </div>
                               </div>
                             </div>
+
+
                               <div class="flex item-center justify-center">
 
 
@@ -157,7 +116,52 @@
                                       </svg>
                                     </label>
                                   </div>
+
                               </div>
+                          </td>
+
+                          <td class="py-3 px-6 text-center">
+                              <span>{{s.ball.tamanio}}</span>
+                          </td>
+
+                          <td class="py-3 px-6 text-center">
+                              <span>{{s.cliente.nombre}}</span>
+                          </td>
+
+                          <td class="py-3 px-6 text-center">
+                              <span>{{s.cliente.apellidoS}}</span>
+                          </td>
+
+                          <td class="py-3 px-6 text-center">
+                              <span>{{s.cliente.DNI}}</span>
+                          </td>
+
+                          <td class="py-3 px-6 text-center">
+                              <span>{{s.cliente.celular}}</span>
+                          </td>
+
+                          <td class="py-3 px-6 text-center">
+                              <span>{{s.cliente.region}}</span>
+                          </td>
+
+                          <td class="py-3 px-6 text-center">
+                              <span>{{s.cliente.provincia}}</span>
+                          </td>
+
+                          <td class="py-3 px-6 text-center">
+                              <span>{{s.cliente.direccion}}</span>
+                          </td>
+
+                          <td class="py-3 px-6 text-center">
+                              <span>{{s.observaciones}}</span>
+                          </td>
+
+                          <td class="py-3 px-6 text-center">
+                              <span>{{s.fechaEntrega}}</span>
+                          </td>
+
+                          <td class="py-3 px-6 text-center">
+                              <span>{{s.fechaDevolucion}}</span>
                           </td>
                       </tr>
                   </tbody>

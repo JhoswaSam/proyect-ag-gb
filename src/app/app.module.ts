@@ -6,7 +6,6 @@ import { NavbarComponent } from './components/navbar/narbar.component';
 import { IndexComponent } from './index/index.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AboutComponent } from './about/about.component';
-import { ListBComponent } from './listB/listB.component';
 import { ErrorComponent } from './error/error.component';
 import { LoginComponent } from './login/login.component';
 import { ContactComponent } from './contact/contact.component';
@@ -19,7 +18,15 @@ import { PeliculasComponent } from './components/peliculas/peliculas.component';
 import { AuthModule } from '@auth0/auth0-angular';
 import { RequestComponent } from './request/request.component';
 import { FormsModule } from '@angular/forms';
-import { datatableService } from './components/datatable/datatable.service';
+import { datatableService } from './service/datatable.service';
+import { RecordComponent } from './components/record/record.component';
+import { ClientsComponent } from './components/clients/clients.component';
+import { personService } from './service/person.service';
+import { registerService } from './service/register.service';
+import { requestService } from './service/request.service';
+import { OrdersComponent } from './components/orders/orders.component';
+import { DataPersonComponent } from './carrito/dataPerson/dataPerson.component';
+import { CarListComponent } from './carrito/carritoList/carList.component';
 
 @NgModule({
   declarations: [
@@ -27,14 +34,18 @@ import { datatableService } from './components/datatable/datatable.service';
     NavbarComponent,
     IndexComponent,
     AboutComponent,
-    ListBComponent,
     ErrorComponent,
     LoginComponent,
     ContactComponent,
     DashBoardAdminComponent,
     DatatableComponent,
     PeliculasComponent,
-    RequestComponent
+    RequestComponent,
+    RecordComponent,
+    ClientsComponent,
+    OrdersComponent,
+    DataPersonComponent,
+    CarListComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +60,7 @@ import { datatableService } from './components/datatable/datatable.service';
       useRefreshTokens: true // Modulo de actualizacion de token automatico
     }),
   ],
-  providers: [datatableService],
+  providers: [datatableService,personService,registerService,requestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
