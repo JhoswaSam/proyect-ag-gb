@@ -24,7 +24,7 @@ export class DataPersonComponent implements OnInit {
 
 
   nuevaP : Person = {
-    id: "",
+    id: "002",
     nombre: "",
     apellidoS: "",
     DNI:"",
@@ -43,9 +43,9 @@ export class DataPersonComponent implements OnInit {
   solicitud : Register = {id: "",
     ball: this.nuevoB,
     cliente: this.nuevaP,
-    observaciones: "",
-    fechaEntrega: "",
-    fechaDevolucion: ""
+    observaciones: "NINGUNA",
+    fechaEntrega: "10-11-2021",
+    fechaDevolucion: "12-11-2021"
   }
 
   newPerson():void {

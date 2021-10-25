@@ -208,6 +208,14 @@
                     <code>{{user | json}}
                     </code>
                   </pre>
+                  <pre *ngIf="auth.user$ | async as user">
+                    <code>{{user.email}}
+                    </code>
+                    <h1 class="text-lg font-bold">{{user.email}}</h1>
+
+                    <img src="{{user.picture}}" alt="">
+                  </pre>
+
               </main>
           </div>
       </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { AuthService } from '@auth0/auth0-angular';
+import { AuthService, AuthModule } from '@auth0/auth0-angular';
 
 
 @Component({
@@ -15,6 +15,8 @@ export class DashBoardAdminComponent implements OnInit{
   }
   Logout(){
     this.auth.logout();
+
   }
+
 
 }

@@ -100,17 +100,17 @@
                                     <label class="label">
                                       <span class="label-text">Size / M3</span>
                                     </label>
-                                    <input type="text" placeholder="20 M3" class="input" >
+                                    <input type="text" placeholder="20 M3" class="input" value="{{ball.tamanio}}">
                                     <label class="label"></label>
 
 
                                     <div class="w-full flex flex-col mb-3">
                                       <span class="label-text">State</span>
-                                      <select class="block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4 md:w-full " required="required" name="integration[city_id]" id="integration_city_id">
+                                      <select class="block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4 md:w-full " required="required" name="integration[city_id]" id="integration_city_id" value= "{{ball.estado}}">
                                         <option value="">Seleted state</option>
-                                        <option value="">Available</option>
-                                        <option value="">Not available</option>
-                                        <option value="">In maintenance</option>
+                                        <option value="Available">Available</option>
+                                        <option value="Not available">Not available</option>
+                                        <option value="In maintenance">In maintenance</option>
                                       </select>
                                       <p class="text-sm text-red-500 hidden mt-3" id="error">Please fill out this field.</p>
                                     </div>
