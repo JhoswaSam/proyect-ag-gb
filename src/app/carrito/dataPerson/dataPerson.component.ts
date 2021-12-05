@@ -40,7 +40,8 @@ export class DataPersonComponent implements OnInit {
     estado: "Disponible"
   }
 
-  solicitud : Register = {id: "",
+  solicitud : Register = {
+    id: "R002",
     ball: this.nuevoB,
     cliente: this.nuevaP,
     observaciones: "NINGUNA",
@@ -49,10 +50,7 @@ export class DataPersonComponent implements OnInit {
   }
 
   newPerson():void {
-    console.log(this.nuevaP)
-    console.log(this.solicitud)
     this.registerPerson.agregar(this.nuevaP)
-    this.registerPerson.agregarA(this.nuevaP)
     this.requestN.agregar(this.solicitud)
     this.nuevaP = {
       id: "",

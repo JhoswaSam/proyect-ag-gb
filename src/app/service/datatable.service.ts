@@ -3,15 +3,15 @@ import { Ball } from '../interface/balls';
 
 @Injectable()
 export class datatableService{
-
+  static serie: number = 0;
   _balones: Ball[] = [
-    {id: Math.round(Math.random() * ( 999 - 100 )+100).toString() ,tamanio: "10",estado: "Available"},
-    {id: Math.round(Math.random() * ( 999 - 100 )+100).toString() ,tamanio: "8",estado: "Not available"},
-    {id: Math.round(Math.random() * ( 999 - 100 )+100).toString() ,tamanio: "11",estado: "Not available"},
-    {id: Math.round(Math.random() * ( 999 - 100 )+100).toString() ,tamanio: "9",estado: "Available"},
-    {id: Math.round(Math.random() * ( 999 - 100 )+100).toString() ,tamanio: "8",estado: "In maintenance"},
-    {id: Math.round(Math.random() * ( 999 - 100 )+100).toString() ,tamanio: "11",estado: "Not available"},
-    {id: Math.round(Math.random() * ( 999 - 100 )+100).toString() ,tamanio: "10",estado: "In maintenance"}
+    {id: (datatableService.serie+=1).toString() ,tamanio: "10",estado: "Available"},
+    {id: (datatableService.serie+=1).toString() ,tamanio: "8",estado: "Not available"},
+    {id: (datatableService.serie+=1).toString() ,tamanio: "11",estado: "Not available"},
+    {id: (datatableService.serie+=1).toString() ,tamanio: "9",estado: "Available"},
+    {id: (datatableService.serie+=1).toString() ,tamanio: "8",estado: "In maintenance"},
+    {id: (datatableService.serie+=1).toString() ,tamanio: "11",estado: "Not available"},
+    {id: (datatableService.serie+=1).toString() ,tamanio: "10",estado: "In maintenance"}
   ]
   get balones(): Ball[]{
     return this._balones;
@@ -21,8 +21,17 @@ export class datatableService{
     this.balones.push(nuevoBall);
   }
 
-  eliminar():void{
-    this._balones.pop();
+  private buscar(id: string) {
+    for(var i=0; i< this._balones.length ;i++){
+      if(this._balones[i].id == id){ return i }
+    }return -1
+  }
+
+  eliminar(id:string):void{
+    let posicion = this.buscar(id);
+    if(!(posicion == -1)){
+      this._balones.splice(posicion,1);
+    }
   }
 
 }

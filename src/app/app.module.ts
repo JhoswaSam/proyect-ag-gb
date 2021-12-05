@@ -27,6 +27,9 @@ import { requestService } from './service/request.service';
 import { OrdersComponent } from './components/orders/orders.component';
 import { DataPersonComponent } from './carrito/dataPerson/dataPerson.component';
 import { CarListComponent } from './carrito/carritoList/carList.component';
+import { ContactsComponent } from './components/contacts/contacts.component';
+import { userService } from './service/user.service';
+import { ItemListComponent } from './components/datatable/item-list/item-list.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +48,9 @@ import { CarListComponent } from './carrito/carritoList/carList.component';
     ClientsComponent,
     OrdersComponent,
     DataPersonComponent,
-    CarListComponent
+    CarListComponent,
+    ContactsComponent,
+    ItemListComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +65,7 @@ import { CarListComponent } from './carrito/carritoList/carList.component';
       useRefreshTokens: true // Modulo de actualizacion de token automatico
     }),
   ],
-  providers: [datatableService,personService,registerService,requestService],
+  providers: [datatableService,personService,registerService,requestService,userService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

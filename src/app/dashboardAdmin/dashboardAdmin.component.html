@@ -187,14 +187,14 @@
                           ><button class="relative block h-8 w-8 rounded-full overflow-hidden shadow focus:outline-none"
                            type="button" aria-haspopup="true" aria-expanded="true" aria-controls="headlessui-menu-items-117">
 
-                            <img class="h-full w-full object-cover"
-                                                      src="https://images.unsplash.com/photo-1528892952291-009c663ce843?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=296&amp;q=80"
+                            <img *ngIf="auth.user$ | async as user" class="h-full w-full object-cover"
+                                                      src="{{user.picture}}"
                                                       alt="Your avatar">
                             </button
                         ></span>
                         <div class="opacity-0 invisible dropdown-menu transition-all duration-300 transform origin-top-right -translate-y-2 scale-95">
                           <div class="absolute right-0 mt-2 w-48 bg-white rounded-md overflow-hidden shadow-xl z-10" role="menu">
-                            <a routerLink="" routerLinkActive="active" tabindex="0" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white"  role="menuitem" >Profile</a>
+                            <a routerLink ="/admin" tabindex="0" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white"  role="menuitem" >Profile</a>
                             <a routerLink="" routerLinkActive="active" tabindex="2" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white"  role="menuitem" >Back to home</a>
                               <a routerLink="" routerLinkActive="active"  tabindex="3" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white" role="menuitem"  (click)="Logout()" >Logout</a>
                           </div>
@@ -203,20 +203,19 @@
                   </div>
               </header>
               <router-outlet></router-outlet>
-              <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
-                  <pre *ngIf="auth.user$ | async as user">
-                    <code>{{user | json}}
-                    </code>
-                  </pre>
-                  <pre *ngIf="auth.user$ | async as user">
-                    <code>{{user.email}}
-                    </code>
-                    <h1 class="text-lg font-bold">{{user.email}}</h1>
+              <!--section info person-->
+                <div class="bg-center bg-cover bg-no-repeat h-screen items-center justify-center flex flex-col">
+                  <div class="card ">
 
-                    <img src="{{user.picture}}" alt="">
-                  </pre>
+                    <div class="avatar ">
+                      <div class="mb-8 rounded-full w-24 h-24">
+                        <img src="{{data_user.picture}}">
+                      </div>
+                    </div>
+                    <kbd class="kbd kbd-lg">wellcome {{data_user.given_name}}</kbd>
+                  </div>
+                </div>
 
-              </main>
           </div>
       </div>
   </div>

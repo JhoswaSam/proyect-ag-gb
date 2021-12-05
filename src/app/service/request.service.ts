@@ -7,7 +7,7 @@ import { Person } from '../interface/person';
 export class requestService{
 
   _solicitudes: Register[] = [
-    {id: "001",
+    {id: "R001",
     ball: {id:"B001",tamanio: "10", estado: "disponible"},
     cliente: {id: "C001", nombre: "Jhoswa",apellidoS: "Samanez Ccoscco", DNI:"12345678",celular: "999 999 999", region: "Cusco",provincia: "Cusco", direccion:"San Martin T-7"},
     observaciones: "ninguna",

@@ -22,7 +22,7 @@ export class DatatableComponent implements OnInit{
   balones: Ball[] = this.nuevoBService.balones;
 
   nuevoB: Ball = {
-    id: Math.round(Math.random() * ( 999 - 100 )+100).toString(),
+    id: (datatableService.serie+=1).toString() ,
     tamanio: "",
     estado: ""
   };
@@ -31,14 +31,18 @@ export class DatatableComponent implements OnInit{
   newBall(): void{
     this.nuevoBService.agregar(this.nuevoB);
     this.nuevoB = {
-      id: "",
+      id: (datatableService.serie+=1).toString() ,
       tamanio: "",
       estado: ""
     }
   }
 
-  deleteBall(){
-    this.nuevoBService.eliminar();
+  deleteBall(id: string){
+    this.nuevoBService.eliminar(id);
+  }
+
+  trackByFn(index: number , balon: Ball):string{
+    return balon.id;
   }
 
 }

@@ -8,17 +8,6 @@ export class personService{
     {id: Math.round(Math.random() * ( 999 - 100 )+100).toString(), nombre: "Jhoswa",apellidoS: "Samanez Ccoscco", DNI:"12345678",celular: "999 999 999", region: "Cusco",provincia: "Cusco", direccion:"San Martin T-7"},
   ]
 
-  _personA:Person = {id: "", nombre: "",apellidoS: "", DNI:"",celular: "", region: "",provincia: "", direccion:""}
-
-  // Datos para solicitar
-  get UPerson(): Person{
-    return this._personA
-  }
-
-  agregarA(nuevaPersonas: Person): void {
-    this._personA = nuevaPersonas
-  }
-
 
   // Base de datos de clientes
   get personas(): Person[]{

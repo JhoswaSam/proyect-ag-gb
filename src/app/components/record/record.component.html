@@ -1,1 +1,172 @@
-<h2>Record</h2>
+<style>
+  .top-100 {top: 100%}
+  .bottom-100 {bottom: 100%}
+  .max-h-select {
+      max-height: 300px;
+  }
+</style>
+
+
+
+<!-- component -->
+<div class="">
+  <div class="min-w-screen min-h-screen bg-gray-100 flex  justify-center font-sans ">
+      <div class="w-full lg:w-5/6">
+
+          <div class="bg-white shadow-md rounded my-6 overflow-y-scroll h-96 overflow-x-auto ">
+
+              <table class="min-w-max w-full table-auto">
+
+                  <thead>
+                      <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                          <!--th class="py-3 px-6 text-left">Project</th-->
+                          <th class="py-3 px-6 text-left">ID</th>
+                          <th class="py-3 px-6 text-center">ACTION</th>
+                          <th class="py-3 px-6 text-center">SIZE / M3</th>
+                          <th class="py-3 px-6 text-center">NAME</th>
+                          <th class="py-3 px-6 text-center">LAST NAME</th>
+                          <th class="py-3 px-6 text-center">DNI</th>
+                          <th class="py-3 px-6 text-center">PHONE</th>
+                          <th class="py-3 px-6 text-center">REGION</th>
+                          <th class="py-3 px-6 text-center">PROVINCIA</th>
+                          <th class="py-3 px-6 text-center">DIRECCION</th>
+                          <th class="py-3 px-6 text-center">OBSERBACIONES</th>
+                          <th class="py-3 px-6 text-center">FECHA ENTREGA</th>
+                          <th class="py-3 px-6 text-center">FECHA DEVOLUCION</th>
+                      </tr>
+                  </thead>
+                  <tbody class="text-gray-600 text-sm font-light">
+
+                      <tr *ngFor="let s of solicitudes" class="border-b border-gray-200 hover:bg-gray-100">
+
+                          <th class="py-3 px-6 text-left">
+                              <div class="flex items-center">
+                                  <span>{{s.id}}</span>
+                              </div>
+                          </th>
+
+                          <td class="py-3 px-6 text-center">
+                            <!-- MODAL-->
+
+                            <!-- MODAL EDIT-->
+                            <input type="checkbox" id="my-modal-3" class="modal-toggle">
+                            <div class="modal">
+                              <div class="modal-box p-10 card bg-base-200 max-w-xs">
+                                <div class="form-control">
+                                  <form action="">
+                                    <label class="label">
+                                      <span class="label-text">Size / M3</span>
+                                    </label>
+                                    <input type="text" placeholder="20 M3" class="input" >
+                                    <label class="label"></label>
+
+
+                                    <div class="w-full flex flex-col mb-3">
+                                      <span class="label-text">State</span>
+                                      <select class="block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4 md:w-full " required="required" name="integration[city_id]" id="integration_city_id">
+                                        <option value="">Seleted state</option>
+                                        <option value="">Available</option>
+                                        <option value="">Not available</option>
+                                        <option value="">In maintenance</option>
+                                      </select>
+                                      <p class="text-sm text-red-500 hidden mt-3" id="error">Please fill out this field.</p>
+                                    </div>
+
+                                    <div class="modal-action ">
+                                      <label for="my-modal-3" class="btn btn-primary" >Accept</label>
+                                      <label for="my-modal-3" class="btn">Close</label>
+                                    </div>
+                                  </form>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- MODAL DELETE-->
+                            <input type="checkbox" id="my-modal-4" class="modal-toggle">
+                            <div class="modal alert alert-warning ">
+                              <div class="modal-box">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-6 h-6 mx-2 stroke-current">
+                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                                </svg>
+                                <p>Sure you want to delete, since this action is permanent</p>
+                                <div class="modal-action ">
+                                  <label for="my-modal-4" class="btn btn-warning ml-2" >Accept</label>
+                                  <!--<label for="my-modal-4" class="btn">Close</label>-->
+                                </div>
+                              </div>
+                            </div>
+
+
+                              <div class="flex item-center justify-center">
+
+
+                                  <!-- Edit -->
+                                  <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                                    <label for="my-modal-3">
+                                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                      </svg>
+                                    </label>
+                                  </div>
+
+                                  <!-- delete -->
+                                  <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                                    <label for="my-modal-4">
+                                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                      </svg>
+                                    </label>
+                                  </div>
+
+                              </div>
+                          </td>
+
+                          <td class="py-3 px-6 text-center">
+                              <span>{{s.ball.tamanio}}</span>
+                          </td>
+
+                          <td class="py-3 px-6 text-center">
+                              <span>{{s.cliente.nombre}}</span>
+                          </td>
+
+                          <td class="py-3 px-6 text-center">
+                              <span>{{s.cliente.apellidoS}}</span>
+                          </td>
+
+                          <td class="py-3 px-6 text-center">
+                              <span>{{s.cliente.DNI}}</span>
+                          </td>
+
+                          <td class="py-3 px-6 text-center">
+                              <span>{{s.cliente.celular}}</span>
+                          </td>
+
+                          <td class="py-3 px-6 text-center">
+                              <span>{{s.cliente.region}}</span>
+                          </td>
+
+                          <td class="py-3 px-6 text-center">
+                              <span>{{s.cliente.provincia}}</span>
+                          </td>
+
+                          <td class="py-3 px-6 text-center">
+                              <span>{{s.cliente.direccion}}</span>
+                          </td>
+
+                          <td class="py-3 px-6 text-center">
+                              <span>{{s.observaciones}}</span>
+                          </td>
+
+                          <td class="py-3 px-6 text-center">
+                              <span>{{s.fechaEntrega}}</span>
+                          </td>
+
+                          <td class="py-3 px-6 text-center">
+                              <span>{{s.fechaDevolucion}}</span>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+</div>
