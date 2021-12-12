@@ -1,11 +1,6 @@
-
 import { Component, OnInit} from '@angular/core';
-
-
-import { Ball } from '../../interface/balls';
-import { datatableService } from "../../service/datatable.service";
-
-
+import { BalonService } from '../../service/API/balon.service';
+import { Balon } from '../../interface/balon';
 
 @Component({
   selector: 'app-datatable',
@@ -13,36 +8,35 @@ import { datatableService } from "../../service/datatable.service";
 })
 export class DatatableComponent implements OnInit{
 
-  constructor(
-    private nuevoBService: datatableService
-  ){ }
-
-  ngOnInit(): void{ }
-
-  balones: Ball[] = this.nuevoBService.balones;
-
-  nuevoB: Ball = {
-    id: (datatableService.serie+=1).toString() ,
-    tamanio: "",
-    estado: ""
-  };
-
-
-  newBall(): void{
-    this.nuevoBService.agregar(this.nuevoB);
-    this.nuevoB = {
-      id: (datatableService.serie+=1).toString() ,
-      tamanio: "",
-      estado: ""
-    }
+  constructor(private serviceBalon :BalonService ){
+    this.serviceBalon.listarBalones();
   }
 
-  deleteBall(id: string){
-    this.nuevoBService.eliminar(id);
+  ngOnInit(): void{
   }
 
-  trackByFn(index: number , balon: Ball):string{
-    return balon.id;
+  public balonNuevo: Balon = {
+    id: 0,
+    capacidad: ""
+  }
+
+  get lista() {
+    return this.serviceBalon.listaBalones;
+  }
+
+  crearBalon(){
+    this.serviceBalon.agregarBalon(this.balonNuevo);
+  }
+
+  eliminarBalon(id:number){
+    this.serviceBalon.eliminarBalon(id);
+  }
+
+  actualizarBalon(capacidad: string,id: string){
+
+    this.balonNuevo.id = Number(id);
+    this.balonNuevo.capacidad = capacidad;
+    this.serviceBalon.actualizarBalon(this.balonNuevo,Number(id))
   }
 
 }

@@ -9,7 +9,7 @@
   </ul>
   <div class="flex justify-center my-6">
     <div class="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg pin-r pin-y md:w-4/5 lg:w-4/5">
-      <div class="flex-1">
+      <div *ngIf="Items.length!=0" class="flex-1">
         <table class="w-full text-sm lg:text-base" cellspacing="0">
           <thead>
             <tr class="h-12 uppercase">
@@ -19,12 +19,13 @@
                 <span class="lg:hidden" title="Quantity">Qtd</span>
                 <span class="hidden lg:inline">Quantity</span>
               </th>
-              <th class="hidden text-right md:table-cell">Unit price</th>
-              <th class="text-right">Total price</th>
+              <th class="hidden text-right md:table-cell">Price</th>
+              <!-- <th class="text-right">Total price</th> -->
             </tr>
           </thead>
           <tbody>
-            <tr>
+
+            <tr *ngFor="let item of Items">
               <td class="hidden pb-4 md:table-cell">
                 <a href="#">
                   <img src="https://secureservercdn.net/166.62.110.72/tmc.71b.myftpupload.com/wp-content/uploads/2020/12/M9.jpg" class="w-20 rounded" alt="Thumbnail">
@@ -32,9 +33,9 @@
               </td>
               <td>
                 <a href="#">
-                  <p class="mb-2 md:ml-4">Cilindro de Aluminio "M9"</p>
-                  <form action="" method="POST">
-                    <button type="submit" class="text-gray-700 md:ml-4">
+                  <p class="mb-2 md:ml-4">{{item.capacidad}} M3 Oxygen bottle</p>
+                  <form action="">
+                    <button type="submit" class="text-gray-700 md:ml-4" (click)="removeItem(item.id)">
                       <small>(Remove item)</small>
                     </button>
                   </form>
@@ -43,97 +44,38 @@
               <td class="justify-center md:justify-end md:flex mt-6">
                 <div class="w-20 h-10">
                   <div class="relative flex flex-row w-full h-8">
-                  <input type="number" value="2"
+                  <input type="number" value="1" [disabled]="true"
                     class="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black" />
                   </div>
                 </div>
               </td>
               <td class="hidden text-right md:table-cell">
                 <span class="text-sm lg:text-base font-medium">
-                  S/550.00
+                  Gratuitous
                 </span>
               </td>
-              <td class="text-right">
+              <!-- <td class="text-right">
                 <span class="text-sm lg:text-base font-medium">
                   S/1100.00
                 </span>
-              </td>
+              </td> -->
             </tr>
-            <tr>
-              <td class="hidden pb-4 md:table-cell">
-                <a href="#">
-                  <img src="https://secureservercdn.net/166.62.110.72/tmc.71b.myftpupload.com/wp-content/uploads/2020/12/1.5-ME-1.jpg" class="w-20 rounded" alt="Thumbnail">
-                </a>
-              </td>
-              <td>
-                <p class="mb-2 md:ml-4">Cilindro de Aluminio 1.5 m3 - "ME"</p>
-                <form action="" method="POST">
-                  <button type="submit" class="text-gray-700 md:ml-4">
-                    <small>(Remove item)</small>
-                  </button>
-                </form>
-              </td>
-              <td class="justify-center md:justify-end md:flex md:mt-4">
-              <div class="w-20 h-10">
-                <div class="relative flex flex-row w-full h-8">
-                <input type="number" value="3"
-                  class="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black" />
-                </div>
-              </div>
-              </td>
-              <td class="hidden text-right md:table-cell">
-                <span class="text-sm lg:text-base font-medium">
-                  S/750.00
-                </span>
-              </td>
-              <td class="text-right">
-                <span class="text-sm lg:text-base font-medium">
-                  S/1500.00
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td class="hidden pb-4 md:table-cell">
-                <a href="#">
-                  <img src="https://secureservercdn.net/166.62.110.72/tmc.71b.myftpupload.com/wp-content/uploads/2021/04/JP_10M3_.jpg" class="w-20 rounded" alt="Thumbnail">
-                </a>
-              </td>
-              <td>
-                <p class="mb-2 md:ml-4">Cilindro de Acero 10 m3</p>
-                <form action="" method="POST">
-                  <button type="submit" class="text-gray-700 md:ml-4">
-                    <small>(Remove item)</small>
-                  </button>
-                </form>
-              </td>
-              <td class="justify-center md:justify-end md:flex md:mt-8">
-              <div class="w-20 h-10">
-                <div class="relative flex flex-row w-full h-8">
-                <input type="number" value="5"
-                  class="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black" />
-                </div>
-              </div>
 
-              </td>
-              <td class="hidden text-right md:table-cell">
-                <span class="text-sm lg:text-base font-medium">
-                  S/1200.00
-                </span>
-              </td>
-              <td class="text-right">
-                <span class="text-sm lg:text-base font-medium">
-                  S/1200.00
-                </span>
-              </td>
-            </tr>
           </tbody>
         </table>
-        <hr class="pb-6 mt-6">
+
+
+        <hr class="pb-2 mt-6">
+
+
         <div class="my-4 mt-6 -mx-2 lg:flex">
+
           <div class="lg:px-2 lg:w-1/2">
-            <div class="p-4 bg-gray-100 rounded-full">
+
+            <!-- <div class="p-4 bg-gray-100 rounded-full">
               <h1 class="ml-2 font-bold uppercase">Coupon Code</h1>
             </div>
+
             <div class="p-4">
               <p class="mb-4 italic">If you have a coupon code, please enter it in the box below</p>
               <div class="justify-center md:flex">
@@ -149,28 +91,31 @@
                 </form>
               </div>
             </div>
+
             <div class="p-4 mt-6 bg-gray-100 rounded-full">
               <h1 class="ml-2 font-bold uppercase">Recomendation</h1>
             </div>
             <div class="p-4">
               <p class="mb-4 italic">If you have recomendation for the store, you can leave them in the box below</p>
               <textarea class="w-full h-24 p-2 bg-gray-100 rounded"></textarea>
-            </div>
+            </div> -->
+
           </div>
+
           <div class="lg:px-2 lg:w-1/2">
-            <div class="p-4 bg-gray-100 rounded-full">
+            <!-- <div class="p-4 bg-gray-100 rounded-full">
               <h1 class="ml-2 font-bold uppercase">Order Details</h1>
-            </div>
-            <div class="p-4">
-              <p class="mb-6 italic">Shipping and additionnal costs are calculated based on values you have entered</p>
-                <div class="flex justify-between border-b">
+            </div> -->
+            <div class="p-2">
+                  <!-- <p class="mb-6 italic">Shipping and additionnal costs are calculated based on values you have entered</p>
+                  <div class="flex justify-between border-b">
                   <div class="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-gray-800">
                     Subtotal
                   </div>
                   <div class="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
                     S/1500.00
                   </div>
-                </div>
+                  </div>
                   <div class="flex justify-between pt-4 border-b">
                     <div class="flex lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-gray-800">
                       <form action="" method="POST">
@@ -207,7 +152,8 @@
                     <div class="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
                       S/.1551.00
                     </div>
-                  </div>
+                  </div> -->
+
                 <a routerLink = "/data">
                   <button class="flex justify-center w-full px-10 py-3 mt-6 font-medium text-white uppercase bg-gray-800 rounded-full shadow item-center hover:bg-gray-700 focus:shadow-outline focus:outline-none">
                     <span class="ml-2 mt-5px">Next Step</span>
@@ -216,7 +162,15 @@
                 </a>
             </div>
           </div>
+
         </div>
+
+
+      </div>
+      <div *ngIf="Items.length==0" class="p-4 bg-gray-100 rounded-full">
+
+        <h1 class="ml-2 font-bold uppercase">Select product</h1>
+
       </div>
     </div>
   </div>

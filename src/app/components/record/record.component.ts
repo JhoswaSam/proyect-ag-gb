@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { registerService } from '../../service/register.service';
 import { Register } from '../../interface/register';
 
 @Component({
@@ -8,14 +7,12 @@ import { Register } from '../../interface/register';
 })
 export class RecordComponent implements OnInit{
   constructor(
-    private historial: registerService
   ){
 
   }
   ngOnInit(){
 
   }
-  solicitudes: Register[] = this.historial.registros;
 
 
 }

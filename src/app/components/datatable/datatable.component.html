@@ -22,15 +22,15 @@
               <div class="modal-box p-10 card bg-base-200 max-w-xs">
                 <div class="form-control">
 
-                  <form #f="ngForm" (ngSubmit)="newBall()" novalidate>
+                  <form #f="ngForm" (ngSubmit)="crearBalon()" novalidate>
                     <label class="label">
                       <span class="label-text">Size / M3</span>
                     </label>
-                    <input type="text" placeholder="20 M3" class="input" name="tamanio" [(ngModel)]="nuevoB.tamanio">
+                    <input type="text" placeholder="20 M3" class="input" name="tamanio" [(ngModel)]="balonNuevo.capacidad">
                     <label class="label"></label>
 
 
-                    <div class="w-full flex flex-col mb-3">
+                    <!-- <div class="w-full flex flex-col mb-3">
                       <span class="label-text">State</span>
                       <select class="block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4 md:w-full " required="required" name="sd" [(ngModel)]="nuevoB.estado">                                                                                                                                                                                                                                                                                                                                                            estado" id="integration_city_id" ngModel>
                         <option value="">Seleted state</option>
@@ -39,10 +39,10 @@
                         <option value="In maintenance">In maintenance</option>
                       </select>
                       <p class="text-sm text-red-500 hidden mt-3" id="error">Please fill out this field.</p>
-                    </div>
+                    </div> -->
 
-                    <div class="modal-action ">
-                      <label for="my-modal-2" class=""><button class="btn btn-primary" type="submit" [disabled]="!nuevoB.tamanio || !nuevoB.estado ">Accept</button></label>
+                     <div class="modal-action ">
+                      <label for="my-modal-2" class=""><button class="btn btn-primary" type="submit" [disabled]="!balonNuevo.capacidad">Accept</button></label>
                       <label for="my-modal-2" class="btn">Close</label>
                     </div>
                   </form>
@@ -53,17 +53,12 @@
 
           </div>
 
-
-
-          <!--end button-->
-
-          <div class="bg-white shadow-md rounded my-6 overflow-y-scroll h-96 ">
+           <div class="bg-white shadow-md rounded my-6 overflow-y-scroll h-96 ">
 
               <table class="min-w-max w-full table-auto ">
 
                   <thead>
                       <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                          <!--th class="py-3 px-6 text-left">Project</th-->
                           <th class="py-3 px-6 text-left">ID</th>
                           <th class="py-3 px-6 text-center">SIZE / M3</th>
                           <th class="py-3 px-6 text-center">STATE</th>
@@ -72,67 +67,64 @@
                   </thead>
                   <tbody class="text-gray-600 text-sm font-light">
 
-                      <tr *ngFor="let ball of balones; trackBy: trackByFn" class="border-b border-gray-200 hover:bg-gray-100">
+                      <tr *ngFor="let ball of lista; " class="border-b border-gray-200 hover:bg-gray-100">
                         <td class="py-3 px-6 text-left">
                           <div class="flex items-center">
                               <span id="idBalon">{{ball.id}}</span>
                           </div>
                         </td>
                         <td class="py-3 px-6 text-center">
-                          <span>{{ball.tamanio}}</span>
+                          <span>{{ball.capacidad}}</span>
                         </td>
                         <td class="py-3 px-6 text-center">
-                        <span *ngIf="ball.estado === 'Not available'" class="bg-red-200 text-red-600 py-1 px-3 rounded-full text-xs">{{ball.estado}}</span>
-                        <span *ngIf="ball.estado === 'Available'" class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">{{ball.estado}}</span>
-                        <span *ngIf="ball.estado === 'In maintenance'" class="bg-yellow-200 text-yellow-600 py-1 px-3 rounded-full text-xs">{{ball.estado}}</span>
+                        <span  class="bg-red-200 text-red-600 py-1 px-3 rounded-full text-xs">Null</span>
+                        <!-- <span *ngIf="ball.tieneEstado.nombre === 'Available'" class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">{{ball.tieneEstado.nombre}}</span>
+                        <span *ngIf="ball.tieneEstado.nombre === 'In maintenance'" class="bg-yellow-200 text-yellow-600 py-1 px-3 rounded-full text-xs">{{ball.tieneEstado.nombre}}</span> -->
                         </td>
                         <td class="py-3 px-6 text-center">
-                        <!-- MODAL-->
 
-                        <!-- MODAL EDIT-->
+
+
                         <input type="checkbox" id="my-modal-3" class="modal-toggle">
                         <div class="modal">
                           <div class="modal-box p-10 card bg-base-200 max-w-xs">
                             <div class="form-control">
-                              <form action="">
+                              <form (ngSubmit)="actualizarBalon(capacidad.value, idBalon.value)" novalidate>
+                                <label class="label">
+                                  <span class="label-text">ID</span>
+                                </label>
+                                <input disabled type="text" placeholder="20 M3" class="input" value="{{ball.id}}" #idBalon>
+                                <label class="label"></label>
+
                                 <label class="label">
                                   <span class="label-text">Size / M3</span>
                                 </label>
-                                <input type="text" placeholder="20 M3" class="input" value="{{ball.tamanio}}">
+                                <input type="text" placeholder="20 M3" class="input" value="{{ball.capacidad}}" #capacidad>
                                 <label class="label"></label>
 
 
-                                <div class="w-full flex flex-col mb-3">
-                                  <span class="label-text">State</span>
-                                  <select class="block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4 md:w-full " required="required" name="integration[city_id]" id="integration_city_id" value= "{{ball.estado}}">
-                                    <option value="">Seleted state</option>
-                                    <option value="Available">Available</option>
-                                    <option value="Not available">Not available</option>
-                                    <option value="In maintenance">In maintenance</option>
-                                  </select>
-                                  <p class="text-sm text-red-500 hidden mt-3" id="error">Please fill out this field.</p>
-                                </div>
 
                                 <div class="modal-action ">
-                                  <label for="my-modal-3" class="btn btn-primary" >Accept</label>
+                                  <label for="my-modal-3" class="btn btn-primary" type="submit" (click)="actualizarBalon(capacidad.value, idBalon.value)">Accept</label>
                                   <label for="my-modal-3" class="btn">Close</label>
                                 </div>
                               </form>
                             </div>
                           </div>
                         </div>
+
                           <div class="flex item-center justify-center">
 
-
-                              <!-- Edit -->
                               <button class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110" >
-                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                                  </svg>
+                                  <label for="my-modal-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                    </svg>
+                                  </label>
                               </button>
 
-                              <!-- delete -->
-                              <button class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110" (click)="deleteBall(ball.id)" >
+
+                              <button class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110" (click)="eliminarBalon(ball.id)" >
                                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                   </svg>

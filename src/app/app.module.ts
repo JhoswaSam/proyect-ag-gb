@@ -12,24 +12,20 @@ import { ContactComponent } from './contact/contact.component';
 import { DashBoardAdminComponent } from './dashboardAdmin/dashboardAdmin.component';
 import { DatatableComponent } from './components/datatable/datatable.component';
 import { PeliculasComponent } from './components/peliculas/peliculas.component';
-
+import { HttpClientModule } from '@angular/common/http';
 
 // Import the module from the SDK
 import { AuthModule } from '@auth0/auth0-angular';
 import { RequestComponent } from './request/request.component';
 import { FormsModule } from '@angular/forms';
-import { datatableService } from './service/datatable.service';
 import { RecordComponent } from './components/record/record.component';
 import { ClientsComponent } from './components/clients/clients.component';
-import { personService } from './service/person.service';
-import { registerService } from './service/register.service';
-import { requestService } from './service/request.service';
 import { OrdersComponent } from './components/orders/orders.component';
 import { DataPersonComponent } from './carrito/dataPerson/dataPerson.component';
 import { CarListComponent } from './carrito/carritoList/carList.component';
 import { ContactsComponent } from './components/contacts/contacts.component';
 import { userService } from './service/user.service';
-import { ItemListComponent } from './components/datatable/item-list/item-list.component';
+import { carService } from './service/car.service';
 
 @NgModule({
   declarations: [
@@ -49,15 +45,15 @@ import { ItemListComponent } from './components/datatable/item-list/item-list.co
     OrdersComponent,
     DataPersonComponent,
     CarListComponent,
-    ContactsComponent,
-    ItemListComponent
+    ContactsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
+    HttpClientModule,
 
-    // Import the module into the application, with configuration
+      // Import the module into the application, with configuration
     AuthModule.forRoot({
       domain: 'dev-4qlklexx.us.auth0.com',
       clientId: 'Hbm7iNSJ48x7PCq0vmLCyJRUxmUbUnpE',
@@ -65,7 +61,7 @@ import { ItemListComponent } from './components/datatable/item-list/item-list.co
       useRefreshTokens: true // Modulo de actualizacion de token automatico
     }),
   ],
-  providers: [datatableService,personService,registerService,requestService,userService],
+  providers: [userService, carService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

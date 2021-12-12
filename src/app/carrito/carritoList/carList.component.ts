@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { carService } from '../../service/car.service';
+import { Balon } from '../../interface/balon';
 
 @Component({
   selector: 'app-carList',
@@ -6,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private itemService: carService) { }
 
   ngOnInit(): void {
+  }
+
+  Items: Balon[] = this.itemService.Items;
+
+  removeItem(id: number){
+    this.itemService.eliminar(id);
   }
 
 }

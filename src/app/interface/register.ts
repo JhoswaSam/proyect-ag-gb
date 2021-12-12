@@ -1,11 +1,12 @@
-import { Ball } from './balls';
 import { Person } from './person';
+import { Balon } from './balon';
+import { Accion } from './accion';
 
 export interface Register{
-  id: string,
-  ball: Ball,
-  cliente: Person,
-  observaciones: string,
+  id: number,
   fechaEntrega: string,
   fechaDevolucion: string
+  balons: Balon[],
+  perteneceCliente: Person,
+  tieneAccion: Accion,
 }

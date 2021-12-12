@@ -1,10 +1,11 @@
+import { Register } from './register';
 export interface Person{
-  id: String,
-  nombre: string,
-  apellidoS: string,
-  DNI: string,
-  celular: string,
-  region: string,
-  provincia: string,
-  direccion: string
+  id: number;
+  nombre: string;
+  apellidoS: string;
+  dni: string;
+  celular: string;
+  domicilio: string;
+  fechaNacimiento: string;
+  // registros: Register[];
 }

@@ -14,17 +14,17 @@ export class DashBoardAdminComponent implements OnInit{
   ){  }
 
   ngOnInit(){
-    this.user.DatosUsuario()
-    console.log(this.auth.user$.toPromise().then(resolve =>{return resolve?.nickname}))
+    // this.user.DatosUsuario()
+    // console.log(this.auth.user$.toPromise().then(resolve =>{return resolve?.nickname}))
   }
 
-  get data_user(){
-    return this.user.user
-  }
+  // get data_user(){
+  //   return this.user.user
+  // }
 
-  access_data(){
-    return new Promise((resolve)=>{resolve(this.user.user)})
-  }
+  // access_data(){
+  //   return new Promise((resolve)=>{resolve(this.user.user)})
+  // }
 
   Logout(){
     this.auth.logout();
