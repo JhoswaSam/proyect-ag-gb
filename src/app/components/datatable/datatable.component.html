@@ -30,16 +30,17 @@
                     <label class="label"></label>
 
 
-                    <!-- <div class="w-full flex flex-col mb-3">
+                    <div class="w-full flex flex-col mb-3">
                       <span class="label-text">State</span>
-                      <select class="block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4 md:w-full " required="required" name="sd" [(ngModel)]="nuevoB.estado">                                                                                                                                                                                                                                                                                                                                                            estado" id="integration_city_id" ngModel>
+                      <select class="block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4 md:w-full " required="required" name="sd" >                                                                                                                                                                                                                                                                                                                                                            estado" id="integration_city_id" ngModel>
                         <option value="">Seleted state</option>
-                        <option value="Available">Available</option>
+                        <option *ngFor="let item of listaAcciones" value="{{item.nombre}}">{{item.nombre}}</option>
+                        <!-- <option value="Available">Available</option>
                         <option value="Not available">Not available</option>
-                        <option value="In maintenance">In maintenance</option>
+                        <option value="In maintenance">In maintenance</option> -->
                       </select>
                       <p class="text-sm text-red-500 hidden mt-3" id="error">Please fill out this field.</p>
-                    </div> -->
+                    </div>
 
                      <div class="modal-action ">
                       <label for="my-modal-2" class=""><button class="btn btn-primary" type="submit" [disabled]="!balonNuevo.capacidad">Accept</button></label>

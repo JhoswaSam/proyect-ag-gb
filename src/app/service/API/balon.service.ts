@@ -21,15 +21,20 @@ export class BalonService {
   }
 
   agregarBalon(balon: Balon){
-    this.http.post(this.url,balon).subscribe();
+    const promesa = this.http.post<any>(this.url,balon).toPromise();
+    return promesa.then(resp => {return true});
+    // this.http.post(this.url,balon).subscribe();
   }
 
   eliminarBalon(id:number){
-    this.http.delete(this.url+"/"+id).subscribe();
+    const promesa = this.http.delete<any>(this.url+"/"+id).toPromise();
+    return promesa.then(resp => {return true});
+    // this.http.delete(this.url+"/"+id).subscribe();
   }
 
   actualizarBalon(balon:Balon,id :number){
-    this.http.put(this.url+"/"+id,balon).subscribe();
+    const promesa = this.http.put<any>(this.url+"/"+id,balon).toPromise();
+    return promesa.then(resp => {return true});
+    // this.http.put(this.url+"/"+id,balon).subscribe();
   }
-
 }

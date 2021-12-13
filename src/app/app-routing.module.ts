@@ -16,10 +16,10 @@ import { RequestComponent } from './request/request.component';
 import { AuthGuard } from '@auth0/auth0-angular';
 import { RecordComponent } from './components/record/record.component';
 import { OrdersComponent } from './components/orders/orders.component';
-import { ContactsComponent } from './components/contacts/contacts.component';
 import { ClientsComponent } from './components/clients/clients.component';
 import { DataPersonComponent } from './carrito/dataPerson/dataPerson.component';
 import { CarListComponent } from './carrito/carritoList/carList.component';
+import { PaymentComponent } from './carrito/datapago/payment.component';
 
 
 const routes = [
@@ -29,10 +29,9 @@ const routes = [
   {path: 'login',  component: LoginComponent},
 
   {path: 'contact',  component: ContactComponent},
-
   {path: 'cart',  component: CarListComponent},
-
   {path: 'data',  component: DataPersonComponent},
+  {path: 'payment',  component: PaymentComponent},
 
 
   {path: 'admin',  component: DashBoardAdminComponent, canActivate: [AuthGuard],
@@ -40,7 +39,6 @@ const routes = [
     {path: 'inventory',  component: DatatableComponent},
     {path: 'orders',  component: OrdersComponent},
     {path: 'record',  component: RecordComponent},
-    {path: 'contacts',  component: ContactsComponent},
     {path: 'clients',  component: ClientsComponent}
   ]},
   {path: 'peliculas',  component: PeliculasComponent},

@@ -1,0 +1,31 @@
+<app-navbar></app-navbar>
+<!-- component -->
+<div class="flex flex-col w-full pt-10">
+
+  <ul class="w-full steps">
+    <li class="step step-primary">List Product</li>
+    <li class="step step-primary">Personal Details</li>
+    <li class="step step-primary">Payments</li>
+  </ul>
+
+  <div class="flex justify-center my-6">
+    <div class="max-w-sm rounded-lg overflow-hidden shadow-lg bg-white m-4">
+      <div class="flex flex-col min-h-full">
+        <div class="px-6 py-4 border-b">
+          <div class="text-xl text-center">Confirm</div>
+        </div>
+        <div class="px-6 py-10 flex-grow">
+          <p class="text-gray-700 text-base">
+            The order was made on the date <kbd  class="kbd kbd-sm">{{fechaActual}}</kbd>, the balls can be collected today or they will arrive at your home in 2 business days and you will have to return them after 30 days, otherwise you will incur a fine.
+          </p>
+        </div>
+        <div class="px-5 py-3 border-t bg-gray-100 flex justify-end">
+          <button class="btn btn-ghost text-gray-600 font-medium text-sm py-1 px-5 rounded mr-3">Cancel</button>
+          <button class="btn btn-primary text-white font-medium text-sm py-1 px-5 rounded" (click)="addRegister()">Accept</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

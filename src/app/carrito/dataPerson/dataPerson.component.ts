@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Person } from '../../interface/person';
 import { Register } from '../../interface/register';
 import { ThrowStmt } from '@angular/compiler';
+import { ClienteService } from '../../service/API/cliente.service';
 
 @Component({
   selector: 'app-dataPerson',
@@ -9,15 +10,14 @@ import { ThrowStmt } from '@angular/compiler';
 })
 export class DataPersonComponent implements OnInit {
 
-  constructor(  ) { }
+  constructor(private personService: ClienteService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
-  nuevaP : Person = {
+  public nuevaP : Person = {
     id: 0,
     nombre: "",
-    apellidoS: "",
+    apellidos: "",
     dni: "",
     celular: "",
     domicilio: "",
@@ -33,7 +33,7 @@ export class DataPersonComponent implements OnInit {
   //   fechaDevolucion: "12-11-2021"
   // }
 
-  newPerson():void {
-
+  addClient(){
+    this.personService.agregarCliente(this.nuevaP);
   }
 }

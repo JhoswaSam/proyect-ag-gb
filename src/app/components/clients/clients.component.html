@@ -1,1 +1,109 @@
-<h2>clients</h2>
+<style>
+  .top-100 {top: 100%}
+  .bottom-100 {bottom: 100%}
+  .max-h-select {
+      max-height: 300px;
+  }
+</style>
+
+<div class="overflow-x-auto">
+  <div class="min-w-screen min-h-screen bg-gray-100 flex  justify-center font-sans overflow-hidden">
+      <div class="w-full lg:w-5/6">
+
+           <div class="bg-white shadow-md rounded my-6 overflow-y-scroll h-96 ">
+
+              <table class="min-w-max w-full table-auto ">
+
+                  <thead>
+                      <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                          <th class="py-3 px-6 text-left">ID</th>
+                          <th class="py-3 px-6 text-center">NAME</th>
+                          <th class="py-3 px-6 text-center">LASTNAME</th>
+                          <th class="py-3 px-6 text-center">DNI</th>
+                          <th class="py-3 px-6 text-center">PHONE</th>
+                          <th class="py-3 px-6 text-center">ADDRESS</th>
+                          <th class="py-3 px-6 text-center">BIRTH</th>
+                          <th class="py-3 px-6 text-center">ACTION</th>
+                      </tr>
+                  </thead>
+                  <tbody class="text-gray-600 text-sm font-light">
+                      <tr *ngFor="let cliente of lista; " class="border-b border-gray-200 hover:bg-gray-100">
+                        <td class="py-3 px-6 text-left">
+                          <div class="flex items-center">
+                              <span>{{cliente.id}}</span>
+                          </div>
+                        </td>
+                        <td class="py-3 px-6 text-center">
+                          <span>{{cliente.nombre}}</span>
+                        </td>
+                        <td class="py-3 px-6 text-center">
+                          <span>{{cliente.apellidos}}</span>
+                        </td>
+                        <td class="py-3 px-6 text-center">
+                          <span>{{cliente.dni}}</span>
+                        </td>
+                        <td class="py-3 px-6 text-center">
+                          <span>{{cliente.celular}}</span>
+                        </td>
+                        <td class="py-3 px-6 text-center">
+                          <span>{{cliente.domicilio}}</span>
+                        </td>
+                        <td class="py-3 px-6 text-center">
+                          <span>{{cliente.fechaNacimiento}}</span>
+                        </td>
+                        <td class="py-3 px-6 text-center">
+
+                        <input type="checkbox" id="my-modal-3" class="modal-toggle">
+                        <div class="modal">
+                          <div class="modal-box p-10 card bg-base-200 max-w-xs">
+                            <div class="form-control">
+                              <form (ngSubmit)="actualizarCliente()" novalidate>
+                                <label class="label">
+                                  <span class="label-text">ID</span>
+                                </label>
+                                <!-- <input disabled type="text" placeholder="20 M3" class="input" value="{{ball.id}}" #idBalon>
+                                <label class="label"></label>
+
+                                <label class="label">
+                                  <span class="label-text">Size / M3</span>
+                                </label>
+                                <input type="text" placeholder="20 M3" class="input" value="{{ball.capacidad}}" #capacidad>
+                                <label class="label"></label> -->
+
+
+
+                                <div class="modal-action ">
+                                  <label for="my-modal-3" class="btn btn-primary" type="submit" (click)="actualizarCliente()">Accept</label>
+                                  <label for="my-modal-3" class="btn">Close</label>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+
+                          <div class="flex item-center justify-center">
+
+                              <button class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110" >
+                                  <label for="my-modal-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                    </svg>
+                                  </label>
+                              </button>
+
+
+                              <button class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110" (click)="eliminarCliente(cliente.id)" >
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                  </svg>
+                              </button>
+                          </div>
+                        </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+</div>
+

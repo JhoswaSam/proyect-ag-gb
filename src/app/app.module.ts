@@ -23,9 +23,10 @@ import { ClientsComponent } from './components/clients/clients.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { DataPersonComponent } from './carrito/dataPerson/dataPerson.component';
 import { CarListComponent } from './carrito/carritoList/carList.component';
-import { ContactsComponent } from './components/contacts/contacts.component';
 import { userService } from './service/user.service';
 import { carService } from './service/car.service';
+import { PaymentComponent } from './carrito/datapago/payment.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { carService } from './service/car.service';
     OrdersComponent,
     DataPersonComponent,
     CarListComponent,
-    ContactsComponent
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +62,7 @@ import { carService } from './service/car.service';
       useRefreshTokens: true // Modulo de actualizacion de token automatico
     }),
   ],
-  providers: [userService, carService],
+  providers: [userService, carService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
