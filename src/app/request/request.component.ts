@@ -25,5 +25,6 @@ export class RequestComponent implements OnInit{
   addCarItem(item : Balon, $event: MouseEvent){
     ($event.target as HTMLButtonElement).disabled = true;
     this.serviceItem.agregarItem(item);
+    localStorage.setItem("car",JSON.stringify(this.serviceItem.Items))
   }
 }

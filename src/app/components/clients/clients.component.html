@@ -4,13 +4,17 @@
   .max-h-select {
       max-height: 300px;
   }
+
+  .caja{
+    min-width: 600px;
+  }
 </style>
 
 <div class="overflow-x-auto">
   <div class="min-w-screen min-h-screen bg-gray-100 flex  justify-center font-sans overflow-hidden">
       <div class="w-full lg:w-5/6">
 
-           <div class="bg-white shadow-md rounded my-6 overflow-y-scroll h-96 ">
+           <div class="bg-white shadow-md rounded my-6 overflow-y-scroll h-96 mt-20">
 
               <table class="min-w-max w-full table-auto ">
 
@@ -53,38 +57,94 @@
                         </td>
                         <td class="py-3 px-6 text-center">
 
-                        <!-- <input type="checkbox" id="my-modal-3" class="modal-toggle">
+
+                        <input type="checkbox" id="my-modal-{{cliente.id}}" class="modal-toggle">
                         <div class="modal">
-                          <div class="modal-box p-10 card bg-base-200 max-w-xs">
+                          <div class="modal-box p-10 card bg-base-200 caja">
                             <div class="form-control">
-                              <form (ngSubmit)="actualizarCliente()" novalidate>
-                                <label class="label">
-                                  <span class="label-text">ID</span>
-                                </label>
-                                <input disabled type="text" placeholder="20 M3" class="input" value="{{ball.id}}" #idBalon>
-                                <label class="label"></label>
 
-                                <label class="label">
-                                  <span class="label-text">Size / M3</span>
-                                </label>
-                                <input type="text" placeholder="20 M3" class="input" value="{{ball.capacidad}}" #capacidad>
-                                <label class="label"></label>
+                              <form (ngSubmit)="actualizarCliente(cliente.id)" novalidate>
 
+                                <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-4">
 
+                                  <div class="md:col-span-2">
+                                    <label class="label">
+                                      <span class="label-text">ID</span>
+                                    </label>
+                                    <input disabled type="text" class="input" value="{{cliente.id}}">
+                                    <label class="label"></label>
+                                  </div>
 
-                                <div class="modal-action ">
-                                  <label for="my-modal-3" class="btn btn-primary" type="submit" (click)="actualizarCliente()">Accept</label>
-                                  <label for="my-modal-3" class="btn">Close</label>
+                                  <div class="md:col-span-2">
+                                    <label class="label">
+                                      <span class="label-text">Name</span>
+                                    </label>
+                                    <input type="text" class="input" value="{{cliente.nombre}}" name="nombreA" [(ngModel)]="clientUpdate.nombre">
+                                    <label class="label"></label>
+                                  </div>
+
+                                  <div class="md:col-span-2">
+                                    <label class="label">
+                                      <span class="label-text">Lastname</span>
+                                    </label>
+                                    <input type="text" class="input" value="{{cliente.apellidos}}" name="apellido" [(ngModel)]="clientUpdate.apellidos">
+                                    <label class="label"></label>
+                                  </div>
+
+                                  <div class="md:col-span-2">
+                                    <label class="label">
+                                      <span class="label-text">DNI</span>
+                                    </label>
+                                    <input type="text" class="input" value="{{cliente.dni}}" name="dni" [(ngModel)]="clientUpdate.dni">
+                                    <label class="label"></label>
+                                  </div>
+
+                                  <div class="md:col-span-2">
+                                    <label class="label">
+                                      <span class="label-text">Phone</span>
+                                    </label>
+                                    <input type="text"  class="input" value="{{cliente.celular}}" name="tel" [(ngModel)]="clientUpdate.celular">
+                                    <label class="label"></label>
+                                  </div>
+
+                                  <div class="md:col-span-2">
+                                    <label class="label">
+                                      <span class="label-text">Address</span>
+                                    </label>
+                                    <input type="text" class="input" value="{{cliente.domicilio}}" name="dir" [(ngModel)]="clientUpdate.domicilio">
+                                    <label class="label"></label>
+                                  </div>
+
+                                  <div class="md:col-span-2">
+                                    <label class="label">
+                                      <span class="label-text">Birth</span>
+                                    </label>
+                                    <input type="date"  class="input" value="{{cliente.fechaNacimiento}}" name="fech"  [(ngModel)]="clientUpdate.fechaNacimiento">
+                                    <label class="label"></label>
+                                  </div>
+
+                                  <div class="md:col-span-2">
+                                    <div class="modal-action ">
+                                      <label for="my-modal-{{cliente.id}}" class="btn btn-primary"  (click)="actualizarCliente(cliente.id)">Accept</label>
+                                      <label for="my-modal-{{cliente.id}}" class="btn">Close</label>
+                                    </div>
+                                  </div>
+
                                 </div>
+
+
+
                               </form>
+
                             </div>
                           </div>
-                        </div> -->
+                        </div>
+
 
                           <div class="flex item-center justify-center">
 
-                              <button class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110" >
-                                  <label for="my-modal-3">
+                              <button (click)="data(cliente.id)" class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110" >
+                                  <label for="my-modal-{{cliente.id}}">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                                     </svg>

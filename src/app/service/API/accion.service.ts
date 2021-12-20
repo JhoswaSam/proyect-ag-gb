@@ -19,4 +19,9 @@ export class AccionService {
       this.listaAcciones = resp;
     });
   }
+
+  buscarAccion(id: number){
+    return this.http.get<Accion>(this.url+"/"+id).toPromise();
+  }
+
 }

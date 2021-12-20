@@ -6,6 +6,5 @@ export interface Balon {
   id: number;
   capacidad: string;
   perteneceAdministrador: Administrador|null;
-  perteneceRegistro: Register|null;
   tieneEstado: Estado|null;
 }

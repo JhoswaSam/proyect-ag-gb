@@ -33,4 +33,16 @@ export class ClienteService {
     const promesa = this.http.put<any>(this.url+"/"+id,cliente).toPromise();
     return promesa.then(resp => {return true});
   }
+
+  buscarCliente(dni: string|null):Promise<Person>{
+    if (dni == null) {
+      return new Promise((resolve, reject)=>{ })
+    }else{
+      return this.http.get<Person>(this.url+"/get/"+dni).toPromise();
+    }
+  }
+
+  buscarClienteID(id:number):Promise<Person>{
+    return this.http.get<Person>(this.url+"/"+id).toPromise();
+  }
 }

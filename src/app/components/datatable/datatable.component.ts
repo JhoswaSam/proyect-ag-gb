@@ -1,9 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { BalonService } from '../../service/API/balon.service';
 import { Balon } from '../../interface/balon';
-import { AccionService } from '../../service/API/accion.service';
 import { EstadoService } from '../../service/API/estado.service';
-import { Estado } from '../../interface/estado';
 
 @Component({
   selector: 'app-datatable',
@@ -25,8 +23,7 @@ export class DatatableComponent implements OnInit{
     id: 0,
     capacidad: "",
     tieneEstado: null,
-    perteneceAdministrador: null,
-    perteneceRegistro: null
+    perteneceAdministrador: null
   }
   public idEstado!: number;
 
@@ -41,16 +38,15 @@ export class DatatableComponent implements OnInit{
 
   crearBalon(){
     this.serviceEstado.buscarEstado(this.idEstado).then(value =>{
-      console.log(value)
+      // console.log(value)
       this.balonNuevo.tieneEstado = value
-      console.log(this.balonNuevo)
+      // console.log(this.balonNuevo)
       this.serviceBalon.agregarBalon(this.balonNuevo).then(value => {this.serviceBalon.listarBalones();});
       this.balonNuevo = {
         id: 0,
         capacidad: "",
         tieneEstado: null,
-        perteneceAdministrador: null,
-        perteneceRegistro: null
+        perteneceAdministrador: null
       }
     });
   }
@@ -70,8 +66,7 @@ export class DatatableComponent implements OnInit{
         id: 0,
         capacidad: "",
         tieneEstado: null,
-        perteneceAdministrador: null,
-        perteneceRegistro: null
+        perteneceAdministrador: null
       }
     })
     // this.serviceBalon.actualizarBalon(this.balonNuevo,Number(id)).then(value=>{this.serviceBalon.listarBalones();})

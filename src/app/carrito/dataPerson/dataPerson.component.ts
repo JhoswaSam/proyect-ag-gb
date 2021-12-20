@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Person } from '../../interface/person';
-import { Register } from '../../interface/register';
-import { ThrowStmt } from '@angular/compiler';
 import { ClienteService } from '../../service/API/cliente.service';
+import { Router, RouterLink, Routes } from '@angular/router';
 
 @Component({
   selector: 'app-dataPerson',
@@ -10,7 +9,10 @@ import { ClienteService } from '../../service/API/cliente.service';
 })
 export class DataPersonComponent implements OnInit {
 
-  constructor(private personService: ClienteService) { }
+  constructor(
+    private personService: ClienteService,
+    private route: Router
+  ) { }
 
   ngOnInit(): void { }
 
@@ -21,20 +23,12 @@ export class DataPersonComponent implements OnInit {
     dni: "",
     celular: "",
     domicilio: "",
-    fechaNacimiento: "",
-    registros: null
+    fechaNacimiento: ""
   }
-  // solicitud : Register = {
-  //   id: "R002",
-  //   ball: this.nuevoB,
-  //   cliente: this.nuevaP,
-  //   observaciones: "NINGUNA",
-  //   fechaEntrega: "10-11-2021",
-  //   fechaDevolucion: "12-11-2021"
-  // }
 
   addClient(){
+    this.route.navigate(["/payment"]);
     localStorage.setItem("DNI",this.nuevaP.dni)
-    // this.personService.agregarCliente(this.nuevaP);
+    this.personService.agregarCliente(this.nuevaP);
   }
 }

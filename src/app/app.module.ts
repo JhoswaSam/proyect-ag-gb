@@ -27,6 +27,8 @@ import { userService } from './service/user.service';
 import { carService } from './service/car.service';
 import { PaymentComponent } from './carrito/datapago/payment.component';
 import { DatePipe } from '@angular/common';
+import { ClienteService } from './service/API/cliente.service';
+import { AccionService } from './service/API/accion.service';
 
 @NgModule({
   declarations: [
@@ -62,7 +64,7 @@ import { DatePipe } from '@angular/common';
       useRefreshTokens: true // Modulo de actualizacion de token automatico
     }),
   ],
-  providers: [userService, carService, DatePipe],
+  providers: [userService, carService, DatePipe,ClienteService,AccionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

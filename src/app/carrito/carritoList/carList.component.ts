@@ -8,7 +8,9 @@ import { Balon } from '../../interface/balon';
 })
 export class CarListComponent implements OnInit {
 
-  constructor(private itemService: carService) { }
+  constructor(private itemService: carService) {
+
+  }
 
   ngOnInit(): void {
   }
@@ -17,6 +19,9 @@ export class CarListComponent implements OnInit {
 
   removeItem(id: number){
     this.itemService.eliminar(id);
+    localStorage.removeItem("car")
+    // localStorage.setItem("car",JSON.parse(this.itemService.Items))
+
   }
 
 }

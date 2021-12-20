@@ -4,6 +4,9 @@
   .max-h-select {
       max-height: 300px;
   }
+  .caja{
+    min-width: 600px;
+  }
 </style>
 
 
@@ -13,7 +16,7 @@
   <div class="min-w-screen min-h-screen bg-gray-100 flex  justify-center font-sans ">
       <div class="w-full lg:w-5/6">
 
-          <div class="bg-white shadow-md rounded my-6 overflow-y-scroll h-96 overflow-x-auto ">
+          <div class="bg-white shadow-md rounded my-6 overflow-y-scroll h-96 overflow-x-auto mt-20">
 
               <table class="min-w-max w-full table-auto">
 
@@ -24,7 +27,9 @@
                           <th class="py-3 px-6 text-center">ACTION</th>
                           <th class="py-3 px-6 text-center">DELIVER DATE</th>
                           <th class="py-3 px-6 text-center">RETURN DATE</th>
-                          <th class="py-3 px-6 text-center">BALONS</th>
+                          <th class="py-3 px-6 text-center">CLIENT</th>
+                          <th class="py-3 px-6 text-center">STATE</th>
+                          <th class="py-3 px-6 text-center">DOCUMENT</th>
                       </tr>
                   </thead>
                   <tbody class="text-gray-600 text-sm font-light">
@@ -39,68 +44,86 @@
 
                           <td class="py-3 px-6 text-center">
 
-                            <!-- <input type="checkbox" id="my-modal-3" class="modal-toggle">
+                            <input type="checkbox" id="my-modal-{{item.id}}" class="modal-toggle">
+
                             <div class="modal">
-                              <div class="modal-box p-10 card bg-base-200 max-w-xs">
+                              <div class="modal-box p-10 card bg-base-200 caja">
                                 <div class="form-control">
-                                  <form action="">
-                                    <label class="label">
-                                      <span class="label-text">Size / M3</span>
-                                    </label>
-                                    <input type="text" placeholder="20 M3" class="input" >
-                                    <label class="label"></label>
 
+                                  <form (ngSubmit)="actualizarOrden(item.id)" novalidate>
 
-                                    <div class="w-full flex flex-col mb-3">
-                                      <span class="label-text">State</span>
-                                      <select class="block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4 md:w-full " required="required" name="integration[city_id]" id="integration_city_id">
-                                        <option value="">Seleted state</option>
-                                        <option value="">Available</option>
-                                        <option value="">Not available</option>
-                                        <option value="">In maintenance</option>
-                                      </select>
-                                      <p class="text-sm text-red-500 hidden mt-3" id="error">Please fill out this field.</p>
+                                    <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-4">
+
+                                      <div class="md:col-span-2">
+                                        <label class="label">
+                                          <span class="label-text">ID</span>
+                                        </label>
+                                        <input disabled type="text" class="input" value="{{item.id}}">
+                                        <label class="label"></label>
+                                      </div>
+
+                                      <div class="md:col-span-2">
+                                        <label class="label">
+                                          <span class="label-text">Deliver Date</span>
+                                        </label>
+                                        <input type="date" class="input" value="{{item.fechaEntrega}}" name="nombreA" [(ngModel)]="reservaUpdate.fechaEntrega">
+                                        <label class="label"></label>
+                                      </div>
+
+                                      <div class="md:col-span-2">
+                                        <label class="label">
+                                          <span class="label-text">Return Date</span>
+                                        </label>
+                                        <input type="date" class="input" value="{{item.fechaDevolucion}}" name="apellido" [(ngModel)]="reservaUpdate.fechaDevolucion">
+                                        <label class="label"></label>
+                                      </div>
+
+                                      <div class="md:col-span-2">
+                                        <label class="label">
+                                          <span class="label-text">Client</span>
+                                        </label>
+                                        <input disabled type="text" class="input" value="{{item.perteneceCliente?.nombre}}" name="dni" >
+                                        <label class="label"></label>
+                                      </div>
+
+                                      <div class="md:col-span-2">
+                                        <div class="w-full flex flex-col mb-3">
+                                          <span class="label-text">State</span>
+                                          <select class="block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4 md:w-full " required="required" name="tieneEstado" [(ngModel)]="idAccion">                                                                                                                                                                                                                                                                                                                                                            estado" id="integration_city_id" ngModel>
+                                            <option value="">Seleted state</option>
+                                            <option *ngFor="let item of listaAcciones" value="{{item.id}}" >{{item.nombre}}</option>
+                                          </select>
+                                          <p class="text-sm text-red-500 hidden mt-3" id="error">Please fill out this field.</p>
+                                        </div>
+                                      </div>
+
+                                      <div class="md:col-span-2">
+                                        <div class="modal-action ">
+                                          <label for="my-modal-{{item.id}}" class="btn btn-primary"  (click)="actualizarOrden(item.id)">Accept</label>
+                                          <label for="my-modal-{{item.id}}" class="btn">Close</label>
+                                        </div>
+                                      </div>
+
                                     </div>
 
-                                    <div class="modal-action ">
-                                      <label for="my-modal-3" class="btn btn-primary" >Accept</label>
-                                      <label for="my-modal-3" class="btn">Close</label>
-                                    </div>
                                   </form>
-                                </div>
-                              </div>
-                            </div>
-
-                            <input type="checkbox" id="my-modal-4" class="modal-toggle">
-                            <div class="modal alert alert-warning ">
-                              <div class="modal-box">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-6 h-6 mx-2 stroke-current">
-                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-                                </svg>
-                                <p>Sure you want to delete, since this action is permanent</p>
-                                <div class="modal-action ">
-                                  <label for="my-modal-4" class="btn btn-warning ml-2" (click) ="deleteO()">Accept</label>
 
                                 </div>
                               </div>
                             </div>
 
 
-                              <div class="flex item-center justify-center"> -->
 
 
+                            <div class="flex item-center justify-center">
 
-
-                              <!-- </div> -->
-                              <div class="flex item-center justify-center">
-
-                                <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-                                  <label for="my-modal-3">
+                                <button (click)="data(item.id)" class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                                  <label for="my-modal-{{item.id}}">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                                     </svg>
                                   </label>
-                                </div>
+                                </button>
 
 
                                 <button class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110" (click)="eliminarRegistro(item.id)">
@@ -108,7 +131,8 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                     </svg>
                                 </button>
-                              </div>
+                            </div>
+
                           </td>
 
                           <td class="py-3 px-6 text-center">
@@ -120,7 +144,25 @@
                           </td>
 
                           <td class="py-3 px-6 text-center">
-                              <span>{{item.balons}}</span>
+                              <span>{{item.perteneceCliente?.nombre}}</span>
+                          </td>
+
+                          <td class="py-3 px-6 text-center">
+                            <span>{{item.tieneAccion?.nombre}}</span>
+                          </td>
+
+                          <td class="py-3 px-6 text-center">
+                              <div class="flex item-center justify-center">
+
+                                <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                                  <label for="my-modal-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M17.064,4.656l-2.05-2.035C14.936,2.544,14.831,2.5,14.721,2.5H3.854c-0.229,0-0.417,0.188-0.417,0.417v14.167c0,0.229,0.188,0.417,0.417,0.417h12.917c0.229,0,0.416-0.188,0.416-0.417V4.952C17.188,4.84,17.144,4.733,17.064,4.656M6.354,3.333h7.917V10H6.354V3.333z M16.354,16.667H4.271V3.333h1.25v7.083c0,0.229,0.188,0.417,0.417,0.417h8.75c0.229,0,0.416-0.188,0.416-0.417V3.886l1.25,1.239V16.667z M13.402,4.688v3.958c0,0.229-0.186,0.417-0.417,0.417c-0.229,0-0.417-0.188-0.417-0.417V4.688c0-0.229,0.188-0.417,0.417-0.417C13.217,4.271,13.402,4.458,13.402,4.688" />
+                                    </svg>
+                                  </label>
+                                </div>
+
+                              </div>
                           </td>
 
 

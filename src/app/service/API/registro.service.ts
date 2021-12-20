@@ -34,4 +34,8 @@ export class RegistroService {
     return promesa.then(resp => {return true});
   }
 
+  buscarRegistro(id:number):Promise<Register>{
+    return this.http.get<Register>(this.url+"/"+id).toPromise();
+  }
+
 }

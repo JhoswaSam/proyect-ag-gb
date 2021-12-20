@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ClienteService } from '../../service/API/cliente.service';
+import { Person } from '../../interface/person';
 
 @Component({
   selector: "app-clients",
@@ -9,6 +10,16 @@ export class ClientsComponent implements OnInit{
 
   constructor(private serviceCliente: ClienteService){
     this.serviceCliente.listarClientes();
+  }
+
+  public clientUpdate: Person = {
+    id: 0,
+    nombre: "",
+    apellidos: "",
+    celular: "",
+    dni:"",
+    domicilio:"",
+    fechaNacimiento:""
   }
 
   ngOnInit(){  }
@@ -21,8 +32,15 @@ export class ClientsComponent implements OnInit{
     this.serviceCliente.eliminarCliente(id).then(value =>{this.serviceCliente.listarClientes();});
   }
 
-  actualizarCliente(){
-    console.log("ACTUALIZADO");
+  data(id:number){
+    this.serviceCliente.buscarClienteID(id).then(value =>{
+      this.clientUpdate = value
+    })
   }
 
+  actualizarCliente(id: number){
+    this.serviceCliente.actualizarCliente(this.clientUpdate,id).then(value =>{
+      this.serviceCliente.listarClientes();
+    })
+  }
 }

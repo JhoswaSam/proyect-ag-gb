@@ -1,4 +1,3 @@
-import { Register } from './register';
 export interface Person{
   id: number;
   nombre: string;
@@ -7,5 +6,4 @@ export interface Person{
   celular: string;
   domicilio: string;
   fechaNacimiento: string;
-  registros: Register[]|null;
 }
