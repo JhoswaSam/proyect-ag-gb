@@ -21,8 +21,8 @@ export class DataPersonComponent implements OnInit {
     dni: "",
     celular: "",
     domicilio: "",
-    fechaNacimiento: ""
-    // registros: Register[]
+    fechaNacimiento: "",
+    registros: null
   }
   // solicitud : Register = {
   //   id: "R002",
@@ -34,6 +34,7 @@ export class DataPersonComponent implements OnInit {
   // }
 
   addClient(){
-    this.personService.agregarCliente(this.nuevaP);
+    localStorage.setItem("DNI",this.nuevaP.dni)
+    // this.personService.agregarCliente(this.nuevaP);
   }
 }

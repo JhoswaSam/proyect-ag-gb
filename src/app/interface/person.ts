@@ -7,5 +7,5 @@ export interface Person{
   celular: string;
   domicilio: string;
   fechaNacimiento: string;
-  // registros: Register[];
+  registros: Register[]|null;
 }

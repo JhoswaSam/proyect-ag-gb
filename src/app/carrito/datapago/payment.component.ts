@@ -29,7 +29,9 @@ export class PaymentComponent implements OnInit {
     id:0,
     fechaEntrega: this.fechaActual?.toString(),
     fechaDevolucion: this.fechaActual?.toString(),
-    balons:this.Items
+    balons:this.Items,
+    perteneceCliente: null,
+    tieneAccion: null
   }
 
   addRegister(){

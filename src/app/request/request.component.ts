@@ -22,7 +22,7 @@ export class RequestComponent implements OnInit{
     return this.serviceBalon.listaBalones;
   }
 
-  addCarItem(item : Balon, $event: MouseEvent):void{
+  addCarItem(item : Balon, $event: MouseEvent){
     ($event.target as HTMLButtonElement).disabled = true;
     this.serviceItem.agregarItem(item);
   }

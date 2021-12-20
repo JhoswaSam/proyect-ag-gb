@@ -16,9 +16,9 @@
           <!--button-->
           <div class="my-6">
 
-            <label for="my-modal-2" class="btn btn-primary modal-button">Add new item</label>
-            <input type="checkbox" id="my-modal-2" class="modal-toggle">
-            <div class="modal ">
+            <label for="my-modal-add" class="btn btn-primary modal-button">Add new item</label>
+            <input type="checkbox" id="my-modal-add" class="modal-toggle">
+            <div class="modal">
               <div class="modal-box p-10 card bg-base-200 max-w-xs">
                 <div class="form-control">
 
@@ -32,19 +32,16 @@
 
                     <div class="w-full flex flex-col mb-3">
                       <span class="label-text">State</span>
-                      <select class="block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4 md:w-full " required="required" name="sd" >                                                                                                                                                                                                                                                                                                                                                            estado" id="integration_city_id" ngModel>
+                      <select class="block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4 md:w-full " required="required" name="tieneEstado" [(ngModel)]="idEstado">                                                                                                                                                                                                                                                                                                                                                            estado" id="integration_city_id" ngModel>
                         <option value="">Seleted state</option>
-                        <option *ngFor="let item of listaAcciones" value="{{item.nombre}}">{{item.nombre}}</option>
-                        <!-- <option value="Available">Available</option>
-                        <option value="Not available">Not available</option>
-                        <option value="In maintenance">In maintenance</option> -->
+                        <option *ngFor="let item of listaAcciones" value="{{item.id}}" >{{item.nombre}}</option>
                       </select>
                       <p class="text-sm text-red-500 hidden mt-3" id="error">Please fill out this field.</p>
                     </div>
 
                      <div class="modal-action ">
-                      <label for="my-modal-2" class=""><button class="btn btn-primary" type="submit" [disabled]="!balonNuevo.capacidad">Accept</button></label>
-                      <label for="my-modal-2" class="btn">Close</label>
+                      <label for="my-modal-add" class=""><button class="btn btn-primary" type="submit" [disabled]="!balonNuevo.capacidad">Accept</button></label>
+                      <label for="my-modal-add" class="btn">Close</label>
                     </div>
                   </form>
                 </div>
@@ -77,16 +74,18 @@
                         <td class="py-3 px-6 text-center">
                           <span>{{ball.capacidad}}</span>
                         </td>
-                        <td class="py-3 px-6 text-center">
-                        <span  class="bg-red-200 text-red-600 py-1 px-3 rounded-full text-xs">Null</span>
-                        <!-- <span *ngIf="ball.tieneEstado.nombre === 'Available'" class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">{{ball.tieneEstado.nombre}}</span>
-                        <span *ngIf="ball.tieneEstado.nombre === 'In maintenance'" class="bg-yellow-200 text-yellow-600 py-1 px-3 rounded-full text-xs">{{ball.tieneEstado.nombre}}</span> -->
+
+                        <td class="py-3 px-6 text-center" [ngSwitch]="ball.tieneEstado?.nombre">
+                        <span *ngSwitchCase = "'Not available'" class="bg-red-200 text-red-600 py-1 px-3 rounded-full text-xs">{{ball.tieneEstado?.nombre}}</span>
+                        <span *ngSwitchCase = "'Available'" class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">{{ball.tieneEstado?.nombre}}</span>
+                        <span *ngSwitchCase = "'In maintenance'" class="bg-yellow-200 text-yellow-600 py-1 px-3 rounded-full text-xs">{{ball.tieneEstado?.nombre}}</span>
+                        <span *ngSwitchDefault class="bg-gray-200 text-gray-600 py-1 px-3 rounded-full text-xs">undefined</span>
                         </td>
                         <td class="py-3 px-6 text-center">
 
 
 
-                        <input type="checkbox" id="my-modal-3" class="modal-toggle">
+                        <input type="checkbox" id="modal-{{ball.id}}" class="modal-toggle">
                         <div class="modal">
                           <div class="modal-box p-10 card bg-base-200 max-w-xs">
                             <div class="form-control">
@@ -103,11 +102,18 @@
                                 <input type="text" placeholder="20 M3" class="input" value="{{ball.capacidad}}" #capacidad>
                                 <label class="label"></label>
 
-
+                                <div class="w-full flex flex-col mb-3">
+                                  <span class="label-text">State</span>
+                                  <select class="block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4 md:w-full " required="required" name="tieneEstado" [(ngModel)]="idEstado">                                                                                                                                                                                                                                                                                                                                                            estado" id="integration_city_id" ngModel>
+                                    <option value="">Seleted state</option>
+                                    <option *ngFor="let item of listaAcciones" value="{{item.id}}" >{{item.nombre}}</option>
+                                  </select>
+                                  <p class="text-sm text-red-500 hidden mt-3" id="error">Please fill out this field.</p>
+                                </div>
 
                                 <div class="modal-action ">
-                                  <label for="my-modal-3" class="btn btn-primary" type="submit" (click)="actualizarBalon(capacidad.value, idBalon.value)">Accept</label>
-                                  <label for="my-modal-3" class="btn">Close</label>
+                                  <label for="modal-{{ball.id}}" class="btn btn-primary" type="submit" (click)="actualizarBalon(capacidad.value, idBalon.value)">Accept</label>
+                                  <label for="modal-{{ball.id}}" class="btn">Close</label>
                                 </div>
                               </form>
                             </div>
@@ -117,7 +123,7 @@
                           <div class="flex item-center justify-center">
 
                               <button class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110" >
-                                  <label for="my-modal-3">
+                                  <label for="modal-{{ball.id}}">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                                     </svg>

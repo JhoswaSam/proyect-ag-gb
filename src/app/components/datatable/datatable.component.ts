@@ -3,6 +3,7 @@ import { BalonService } from '../../service/API/balon.service';
 import { Balon } from '../../interface/balon';
 import { AccionService } from '../../service/API/accion.service';
 import { EstadoService } from '../../service/API/estado.service';
+import { Estado } from '../../interface/estado';
 
 @Component({
   selector: 'app-datatable',
@@ -22,8 +23,12 @@ export class DatatableComponent implements OnInit{
 
   public balonNuevo: Balon = {
     id: 0,
-    capacidad: ""
+    capacidad: "",
+    tieneEstado: null,
+    perteneceAdministrador: null,
+    perteneceRegistro: null
   }
+  public idEstado!: number;
 
   get lista() {
     return this.serviceBalon.listaBalones;
@@ -35,17 +40,41 @@ export class DatatableComponent implements OnInit{
 
 
   crearBalon(){
-    this.serviceBalon.agregarBalon(this.balonNuevo).then(value => {this.serviceBalon.listarBalones();});
+    this.serviceEstado.buscarEstado(this.idEstado).then(value =>{
+      console.log(value)
+      this.balonNuevo.tieneEstado = value
+      console.log(this.balonNuevo)
+      this.serviceBalon.agregarBalon(this.balonNuevo).then(value => {this.serviceBalon.listarBalones();});
+      this.balonNuevo = {
+        id: 0,
+        capacidad: "",
+        tieneEstado: null,
+        perteneceAdministrador: null,
+        perteneceRegistro: null
+      }
+    });
   }
 
   eliminarBalon(id:number){
+    console.log(id)
     this.serviceBalon.eliminarBalon(id).then(value => {this.serviceBalon.listarBalones();});
   }
 
   actualizarBalon(capacidad: string,id: string){
     this.balonNuevo.id = Number(id);
     this.balonNuevo.capacidad = capacidad;
-    this.serviceBalon.actualizarBalon(this.balonNuevo,Number(id))
+    this.serviceEstado.buscarEstado(this.idEstado).then(value =>{
+      this.balonNuevo.tieneEstado = value;
+      this.serviceBalon.actualizarBalon(this.balonNuevo,Number(id)).then(value=>{this.serviceBalon.listarBalones();})
+      this.balonNuevo = {
+        id: 0,
+        capacidad: "",
+        tieneEstado: null,
+        perteneceAdministrador: null,
+        perteneceRegistro: null
+      }
+    })
+    // this.serviceBalon.actualizarBalon(this.balonNuevo,Number(id)).then(value=>{this.serviceBalon.listarBalones();})
   }
 
 }

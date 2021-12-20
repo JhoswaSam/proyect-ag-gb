@@ -9,15 +9,12 @@
 
       </h1>
   </div>
-
-
-    <div *ngFor="let item of lista; let esImpar = even; let esPar = odd" class="grid grid-cols-1 lg:grid-cols-2 gap-6 flex-auto">
-
-      <div class="flex font-sans">
-        <div class="flex-none w-48 relative">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 flex-auto">
+      <div *ngFor="let item of lista; let esImpar = even; let esPar = odd"  class="flex font-sans">
+        <div *ngIf="item.tieneEstado?.nombre === 'Available'" class="flex-none w-48 relative">
           <img src="https://medicolsa.com.co/391-large_default/cilindro-en-aluminio-para-oxigeno-luxfer-kramer-eeuu-ref-m00m-3452-litros.jpg" alt="" class="absolute inset-0 w-full h-full object-cover" />
         </div>
-        <form class="flex-auto p-6">
+        <form *ngIf="item.tieneEstado?.nombre === 'Available'" class="flex-auto p-6">
           <div class="flex flex-wrap">
             <h1 class="flex-auto text-lg font-semibold text-gray-900">
               Oxygen balloon
@@ -49,7 +46,7 @@
           <div class="flex space-x-4 mb-6 text-sm font-medium">
             <div class="flex-auto flex space-x-4">
 
-              <button class="h-10 px-6 font-semibold rounded-md bg-black text-white" (click)="addCarItem(item, $event)">
+              <button class="h-10 px-6 font-semibold rounded-md bg-black text-white" (click)="addCarItem(item,$event)" #btnAddCar>
                 Get now
               </button>
 
@@ -61,58 +58,5 @@
           </p>
         </form>
       </div>
-
-      <!-- <div  class="flex font-sans">
-          <div class="flex-none w-48 relative">
-            <img src="https://medicolsa.com.co/391-large_default/cilindro-en-aluminio-para-oxigeno-luxfer-kramer-eeuu-ref-m00m-3452-litros.jpg" alt="" class="absolute inset-0 w-full h-full object-cover" />
-          </div>
-          <form class="flex-auto p-6">
-            <div class="flex flex-wrap">
-              <h1 class="flex-auto text-lg font-semibold text-gray-900">
-                Classic Utility Jacket
-              </h1>
-              <div class="text-lg font-semibold text-gray-500">
-                Gratuitous
-              </div>
-              <div class="w-full flex-none text-sm font-medium text-gray-700 mt-2">
-                In stock
-              </div>
-            </div>
-
-            <div class="flex items-baseline mt-4 mb-6 pb-6 border-b border-gray-200">
-              <div class="space-x-1 flex text-sm">
-
-                <div class="w-16 flex-none text-sm font-medium text-gray-900 mt-2">
-                  SIZE M3 :
-                </div>
-                <label>
-                  <input class="sr-only peer" name="size" type="radio" value="s" />
-                  <div class="w-9 h-9 rounded-lg bg-black flex items-center justify-center text-white peer-checked:font-semibold peer-checked:bg-gray-900 peer-checked:text-white">
-                    PRubea
-                  </div>
-                </label>
-
-              </div>
-            </div>
-
-            <div class="flex space-x-4 mb-6 text-sm font-medium">
-              <div class="flex-auto flex space-x-4">
-
-                <button class="h-10 px-6 font-semibold rounded-md bg-black text-white" (click)="addCarItem(item.id)">
-                  Get now
-                </button>
-
-              </div>
-
-            </div>
-            <p class="text-sm text-gray-700">
-              Free shipping regionally
-            </p>
-          </form>
-      </div> -->
-
     </div>
-
-
-
 </section>
