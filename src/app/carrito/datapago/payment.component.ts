@@ -5,6 +5,7 @@ import { Register } from '../../interface/register';
 import { carService } from '../../service/car.service';
 import { Balon } from '../../interface/balon';
 import { ClienteService } from '../../service/API/cliente.service';
+import { BalonService } from '../../service/API/balon.service';
 
 @Component({
   selector: 'app-payment',
@@ -16,10 +17,11 @@ export class PaymentComponent implements OnInit {
     private datePipe: DatePipe,
     private registerService: RegistroService,
     private itemService: carService,
-    private clientService: ClienteService
-  ) { }
+    private clientService: ClienteService,
+    private balonService: BalonService
+  ) { this.registerService.listarRegistros() }
 
-  ngOnInit(): void {  }
+  ngOnInit(): void { }
 
   today = Date.now();
 
@@ -28,13 +30,12 @@ export class PaymentComponent implements OnInit {
   fechaEntrega = this.datePipe.transform(this.today+86400000,"yyyy-MM-dd")
   fechaDevolucion = this.datePipe.transform(this.today+2592000000,"yyyy-MM-dd");
 
-  Items: Balon[] = JSON.parse(localStorage.getItem("car")!);
+  Items: Balon[] = this.itemService.Items;
 
   public registroNew: Register ={
     id:0,
     fechaEntrega: this.fechaEntrega?.toString(),
     fechaDevolucion: this.fechaDevolucion?.toString(),
-    balons:this.Items,
     perteneceCliente: null,
     tieneAccion: {
       "id":5,
@@ -46,9 +47,17 @@ export class PaymentComponent implements OnInit {
     const dni = localStorage.getItem("DNI")
     this.clientService.buscarCliente(dni).then(value =>{
       this.registroNew.perteneceCliente =  value
-      this.registerService.agregarRegistro(this.registroNew);
+      this.registerService.agregarRegistro(this.registroNew).then(value =>{
+        this.Items.forEach(balon =>{
+          this.balonService.buscarBalon(balon.id).then(value =>{
+            let B = value;
+            B.tieneEstado = {"id":5,"nombre":"Not available"}
+            B.perteneceRegistro = this.registerService.listaRegistros[this.registerService.listaRegistros.length-1]
+            this.balonService.actualizarBalon(B,B.id)
+          })
+        })
+      });
       localStorage.removeItem("DNI")
-      localStorage.removeItem("car")
     })
   }
 }

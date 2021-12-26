@@ -23,6 +23,7 @@ export class DatatableComponent implements OnInit{
     id: 0,
     capacidad: "",
     tieneEstado: null,
+    perteneceRegistro:null,
     perteneceAdministrador: null
   }
   public idEstado!: number;
@@ -46,6 +47,7 @@ export class DatatableComponent implements OnInit{
         id: 0,
         capacidad: "",
         tieneEstado: null,
+        perteneceRegistro:null,
         perteneceAdministrador: null
       }
     });
@@ -66,6 +68,7 @@ export class DatatableComponent implements OnInit{
         id: 0,
         capacidad: "",
         tieneEstado: null,
+        perteneceRegistro:null,
         perteneceAdministrador: null
       }
     })

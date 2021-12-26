@@ -19,7 +19,6 @@ export class OrdersComponent implements OnInit{
 
   public reservaUpdate:Register={
     id: 0,
-    balons: null,
     fechaDevolucion: "",
     fechaEntrega:"",
     perteneceCliente: null,

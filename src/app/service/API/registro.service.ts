@@ -21,7 +21,8 @@ export class RegistroService {
   }
 
   agregarRegistro(registro: Register){
-    this.http.post(this.url,registro).subscribe();
+    const promesa = this.http.post(this.url,registro).toPromise();
+    return promesa.then(resp =>{return true;})
   }
 
   eliminarRegistro(id:Number){

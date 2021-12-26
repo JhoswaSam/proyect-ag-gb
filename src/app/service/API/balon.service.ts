@@ -37,4 +37,8 @@ export class BalonService {
     return promesa.then(resp => {return true});
     // this.http.put(this.url+"/"+id,balon).subscribe();
   }
+
+  buscarBalon(id: number):Promise<Balon>{
+    return this.http.get<Balon>(this.url+"/"+id).toPromise();
+  }
 }

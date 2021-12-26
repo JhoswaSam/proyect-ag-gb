@@ -19,9 +19,6 @@ export class CarListComponent implements OnInit {
 
   removeItem(id: number){
     this.itemService.eliminar(id);
-    localStorage.removeItem("car")
-    // localStorage.setItem("car",JSON.parse(this.itemService.Items))
-
   }
 
 }
